@@ -61,14 +61,11 @@ window.onload = function() {
         }
     }
 
-    function drawRect(x, y, width, height, color) {
-        graphicsContext.fillStyle = color;
-        graphicsContext.fillRect(x, y, width, height);
-    }
-
     function draw() {
-        drawRect(0, 0, canvas.width, canvas.height, '#000');
-        drawRect(x, y, 30, 30, 'green');
+        drawRect(0, 0, canvas.width, canvas.height, '#98b');
+        drawBackgroundTiles();
+        drawRect(x, y, 32, 32, '#a22');
+        drawForegroundTiles();
     }
 
     mainLoop = function() {
