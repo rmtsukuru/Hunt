@@ -1,10 +1,10 @@
 var FPS = 60, SPEED = 3;
 
 var keys = {
-    37: 'left',
-    39: 'right',
-    38: 'up',
-    40: 'down'
+    left: 37,
+    right: 39,
+    up: 38,
+    down: 40
 };
 
 var canvas, graphicsContext;
@@ -23,8 +23,11 @@ window.onload = function() {
     });
 
     keyPressed = function(e) {
-        if (_.contains(_.keys(keys), e.keyCode.toString())) {
-            keyState[keys[e.keyCode]] = true;
+        var key = _.findKey(keys, function(x) {
+            return x == e.keyCode;
+        });
+        if (key) {
+            keyState[key] = true;
         }
         else {
             console.log('Pressed ' + e.keyCode);
@@ -32,8 +35,11 @@ window.onload = function() {
     };
 
     keyReleased = function(e) {
-        if (_.contains(_.keys(keys), e.keyCode.toString())) {
-            keyState[keys[e.keyCode]] = false;
+        var key = _.findKey(keys, function(x) {
+            return x == e.keyCode;
+        });
+        if (key) {
+            keyState[key] = false;
         }
         else {
             console.log('Released ' + e.keyCode);
