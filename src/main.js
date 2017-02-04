@@ -1,4 +1,5 @@
 var FPS = 60, SPEED = 3;
+var PLAYER_SIZE = 32;
 
 var keys = {
     left: 37,
@@ -9,8 +10,9 @@ var keys = {
 
 var canvas, graphicsContext;
 var mainLoop, keyPressed, keyReleased;
+var keyState;
 
-var x, y, keyState;
+var x, y, xVelocity, yVelocity;
 
 window.onload = function() {
     canvas = document.getElementById('gameCanvas');
@@ -46,19 +48,27 @@ window.onload = function() {
         }
     };
 
+    function applyVelocity() {
+        x += xVelocity;
+        y += yVelocity;
+    };
+
     function update() {
+        xVelocity = yVelocity = 0;
         if (keyState.left) {
-            x -= SPEED;
+            xVelocity -= SPEED;
         }
         if (keyState.right) {
-            x += SPEED;
+            xVelocity += SPEED;
         }
         if (keyState.up) {
-            y -= SPEED;
+            yVelocity -= SPEED;
         }
         if (keyState.down) {
-            y += SPEED;
+            yVelocity += SPEED;
         }
+        handleTileCollision();
+        applyVelocity();
     }
 
     function draw() {
