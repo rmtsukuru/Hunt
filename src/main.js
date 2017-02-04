@@ -1,5 +1,4 @@
-var FPS = 60, SPEED = 5;
-var PLAYER_SIZE = 32;
+const FPS = 60; 
 
 var keys = {
     left: 37,
@@ -12,13 +11,12 @@ var canvas, graphicsContext;
 var mainLoop, keyPressed, keyReleased;
 var keyState;
 
-var x, y, xVelocity, yVelocity;
+var player;
 
 window.onload = function() {
     canvas = document.getElementById('gameCanvas');
     graphicsContext = canvas.getContext('2d');
-    x = 350;
-    y = 300;
+    player = new Player(350, 300);
     keyState = {};
     _.each(_.values(keys), function(key) { 
         keyState[key] = false; 
@@ -48,33 +46,14 @@ window.onload = function() {
         }
     };
 
-    function applyVelocity() {
-        x += xVelocity;
-        y += yVelocity;
-    };
-
     function update() {
-        xVelocity = yVelocity = 0;
-        if (keyState.left) {
-            xVelocity -= SPEED;
-        }
-        if (keyState.right) {
-            xVelocity += SPEED;
-        }
-        if (keyState.up) {
-            yVelocity -= SPEED;
-        }
-        if (keyState.down) {
-            yVelocity += SPEED;
-        }
-        handleTileCollision();
-        applyVelocity();
+        player.update();
     }
 
     function draw() {
         drawRect(0, 0, canvas.width, canvas.height, '#98b');
         drawBackgroundTiles();
-        drawRect(x, y, PLAYER_SIZE, PLAYER_SIZE, '#a22');
+        player.draw();
         drawForegroundTiles();
     }
 

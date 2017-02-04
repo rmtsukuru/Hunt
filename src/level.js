@@ -54,88 +54,88 @@ function tileIndex(x) {
     return Math.floor(x / TILE_SIZE);
 }
 
-function getLeftCollisionVelocity() {
-    var minTileX = tileIndex(x + xVelocity);
-    var maxTileX = tileIndex(x + 1) - 1;
-    var minTileY = tileIndex(y);
-    var maxTileY = tileIndex(y + PLAYER_SIZE - 1);
+function getLeftCollisionVelocity(entity) {
+    var minTileX = tileIndex(entity.x + entity.xVelocity);
+    var maxTileX = tileIndex(entity.x + 1) - 1;
+    var minTileY = tileIndex(entity.y);
+    var maxTileY = tileIndex(entity.y + PLAYER_SIZE - 1);
     for (var i = maxTileX; i >= minTileX; i--) {
         for (var j = minTileY; j <= maxTileY; j++) {
             if (!isTilePassable(i, j)) {
-                return Math.max(i * TILE_SIZE + TILE_SIZE - x, xVelocity);
+                return Math.max(i * TILE_SIZE + TILE_SIZE - entity.x, entity.xVelocity);
             }
         }
     }
-    return xVelocity;
+    return entity.xVelocity;
 }
 
-function getRightCollisionVelocity() {
-    var minTileX = tileIndex(x + PLAYER_SIZE - 1) + 1;
-    var maxTileX = tileIndex(x + PLAYER_SIZE + xVelocity);
-    var minTileY = tileIndex(y);
-    var maxTileY = tileIndex(y + PLAYER_SIZE - 1);
+function getRightCollisionVelocity(entity) {
+    var minTileX = tileIndex(entity.x + PLAYER_SIZE - 1) + 1;
+    var maxTileX = tileIndex(entity.x + PLAYER_SIZE + entity.xVelocity);
+    var minTileY = tileIndex(entity.y);
+    var maxTileY = tileIndex(entity.y + PLAYER_SIZE - 1);
     for (var i = minTileX; i <= maxTileX; i++) {
         for (var j = minTileY; j <= maxTileY; j++) {
             if (!isTilePassable(i, j)) {
-                return Math.min(i * TILE_SIZE - (x + PLAYER_SIZE), xVelocity);
+                return Math.min(i * TILE_SIZE - (entity.x + PLAYER_SIZE), entity.xVelocity);
             }
         }
     }
-    return xVelocity;
+    return entity.xVelocity;
 }
 
-function getUpCollisionVelocity(tempX) {
-    var minTileY = tileIndex(y + yVelocity);
-    var maxTileY = tileIndex(y) - 1;
+function getUpCollisionVelocity(entity, tempX) {
+    var minTileY = tileIndex(entity.y + entity.yVelocity);
+    var maxTileY = tileIndex(entity.y) - 1;
     var minTileX = tileIndex(tempX);
     var maxTileX = tileIndex(tempX + PLAYER_SIZE - 1);
     for (var j = maxTileY; j >= minTileY; j--) {
         for (var i = minTileX; i <= maxTileX; i++) {
             if (!isTilePassable(i, j)) {
-                return Math.max(j * TILE_SIZE + TILE_SIZE - y, yVelocity);
+                return Math.max(j * TILE_SIZE + TILE_SIZE - entity.y, entity.yVelocity);
             }
         }
     }
-    return yVelocity;
+    return entity.yVelocity;
 }
 
-function getDownCollisionVelocity(tempX) {
-    var minTileY = tileIndex(y + PLAYER_SIZE - 1) + 1;
-    var maxTileY = tileIndex(y + PLAYER_SIZE + yVelocity);
+function getDownCollisionVelocity(entity, tempX) {
+    var minTileY = tileIndex(entity.y + PLAYER_SIZE - 1) + 1;
+    var maxTileY = tileIndex(entity.y + PLAYER_SIZE + entity.yVelocity);
     var minTileX = tileIndex(tempX);
     var maxTileX = tileIndex(tempX + PLAYER_SIZE - 1);
     for (var j = minTileY; j <= maxTileY; j++) {
         for (var i = minTileX; i <= maxTileX; i++) {
             if (!isTilePassable(i, j)) {
-                return Math.min(j * TILE_SIZE - (y + PLAYER_SIZE), yVelocity);
+                return Math.min(j * TILE_SIZE - (entity.y + PLAYER_SIZE), entity.yVelocity);
             }
         }
     }
-    return yVelocity;
+    return entity.yVelocity;
 }
 
-function getCollisionXVelocity() {
-    if (xVelocity < 0) {
-        return getLeftCollisionVelocity();
+function getCollisionXVelocity(entity) {
+    if (entity.xVelocity < 0) {
+        return getLeftCollisionVelocity(entity);
     }
-    else if (xVelocity > 0) {
-        return getRightCollisionVelocity();
+    else if (entity.xVelocity > 0) {
+        return getRightCollisionVelocity(entity);
     }
     return 0;
 }
 
-function getCollisionYVelocity() {
-    if (yVelocity < 0) {
-        return getUpCollisionVelocity(x + xVelocity);
+function getCollisionYVelocity(entity) {
+    if (entity.yVelocity < 0) {
+        return getUpCollisionVelocity(entity, entity.x + entity.xVelocity);
     }
-    else if (yVelocity > 0) {
-        return getDownCollisionVelocity(x + xVelocity);
+    else if (entity.yVelocity > 0) {
+        return getDownCollisionVelocity(entity, entity.x + entity.xVelocity);
     }
     return 0;
 }
 
-function handleTileCollision() {
-    xVelocity = getCollisionXVelocity();
-    yVelocity = getCollisionYVelocity();
+function handleTileCollision(entity) {
+    entity.xVelocity = getCollisionXVelocity(entity);
+    entity.yVelocity = getCollisionYVelocity(entity);
 }
 
