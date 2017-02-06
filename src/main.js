@@ -16,6 +16,8 @@ var player;
 window.onload = function() {
     canvas = document.getElementById('gameCanvas');
     graphicsContext = canvas.getContext('2d');
+    canvasWidth = canvas.width;
+    canvasHeight = canvas.height;
     player = new Player(350, 300);
     keyState = {};
     _.each(_.values(keys), function(key) { 
@@ -48,10 +50,11 @@ window.onload = function() {
 
     function update() {
         player.update();
+        updateCamera(player.x, player.y);
     }
 
     function draw() {
-        drawRect(0, 0, canvas.width, canvas.height, '#98b');
+        drawRect(0, 0, canvasWidth, canvasHeight, '#98b', true);
         drawBackgroundTiles();
         player.draw();
         drawForegroundTiles();
