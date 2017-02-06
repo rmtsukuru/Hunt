@@ -16,9 +16,9 @@ function drawRect(x, y, width, height, color, ignoreCamera) {
     }
 }
 
-function updateCamera(playerX, playerY) {
-    cameraX = playerX - canvasWidth / 2;
-    cameraY = playerY - canvasHeight / 2;
+function updateCamera(target) {
+    cameraX = target.x - canvasWidth / 2;
+    cameraY = target.y - canvasHeight / 2;
 
     if (cameraX < 0) {
         cameraX = 0;

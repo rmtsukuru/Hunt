@@ -50,7 +50,7 @@ window.onload = function() {
 
     function update() {
         player.update();
-        updateCamera(player.x, player.y);
+        updateCamera(player);
     }
 
     function draw() {
