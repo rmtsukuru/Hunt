@@ -1,21 +1,27 @@
 const FPS = 60;
 var mainLoop;
 var player;
+var entities = [];
 
 window.onload = function() {
     player = new Player(350, 300); 
+    entities.push(player);
     configureGraphics();
     configureInput();
 
     function update() {
-        player.update();
+        entities.forEach(function(entity, i) {
+            entity.update();
+        });
         updateCamera(player);
     }
 
     function draw() {
         drawRect(0, 0, canvasWidth, canvasHeight, '#98b', true);
         drawBackgroundTiles();
-        player.draw();
+        entities.forEach(function(entity, i) {
+            entity.draw();
+        });
         drawForegroundTiles();
     }
 
