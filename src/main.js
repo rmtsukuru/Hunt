@@ -1,16 +1,10 @@
 const FPS = 60;
-
-var canvas, graphicsContext;
 var mainLoop;
-
 var player;
 
 window.onload = function() {
-    canvas = document.getElementById('gameCanvas');
-    graphicsContext = canvas.getContext('2d');
-    canvasWidth = canvas.width;
-    canvasHeight = canvas.height;
     player = new Player(350, 300); 
+    configureGraphics();
     configureInput();
 
     function update() {

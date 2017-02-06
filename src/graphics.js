@@ -1,10 +1,19 @@
 var cameraX = 0;
 var cameraY = 0;
 
+var canvas, graphicsContext;
 var canvasWidth, canvasHeight;
 
 var mapWidth = tiles[0].length * TILE_SIZE;
 var mapHeight = tiles.length * TILE_SIZE;
+
+
+function configureGraphics() {
+    canvas = document.getElementById('gameCanvas');
+    graphicsContext = canvas.getContext('2d');
+    canvasWidth = canvas.width;
+    canvasHeight = canvas.height;
+}
 
 function drawRect(x, y, width, height, color, ignoreCamera) {
     graphicsContext.fillStyle = color;
