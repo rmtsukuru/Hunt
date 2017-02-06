@@ -1,11 +1,4 @@
-const FPS = 60; 
-
-var keys = {
-    left: 37,
-    right: 39,
-    up: 38,
-    down: 40
-};
+const FPS = 60;
 
 var canvas, graphicsContext;
 var mainLoop;
