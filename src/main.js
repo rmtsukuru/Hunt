@@ -1,11 +1,13 @@
 const FPS = 60;
 var mainLoop;
-var player;
+var player, beast;
 var entities = [];
 
 window.onload = function() {
     player = new Player(350, 300); 
     entities.push(player);
+    beast = new Beast(480, 792);
+    entities.push(beast);
     configureGraphics();
     configureInput();
 

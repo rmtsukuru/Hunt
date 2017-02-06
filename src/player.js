@@ -1,4 +1,4 @@
-const SPEED = 5;
+const PLAYER_SPEED = 5;
 const PLAYER_SIZE = 32;
 
 function Player(x, y) {
@@ -13,17 +13,17 @@ Player.prototype.update = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
     if (keyState.left) {
-        this.xVelocity -= SPEED;
+        this.xVelocity -= PLAYER_SPEED;
     }
     if (keyState.right) {
-        this.xVelocity += SPEED;
+        this.xVelocity += PLAYER_SPEED;
     }
     if (keyState.up) {
-        this.yVelocity -= SPEED;
+        this.yVelocity -= PLAYER_SPEED;
     }
     if (keyState.down) {
-        this.yVelocity += SPEED;
+        this.yVelocity += PLAYER_SPEED;
     }
     handleTileCollision(this);
     Entity.prototype.update.call(this);
-}
+};
