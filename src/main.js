@@ -8,7 +8,7 @@ var keys = {
 };
 
 var canvas, graphicsContext;
-var mainLoop, keyPressed, keyReleased;
+var mainLoop;
 var keyState;
 
 var player;
@@ -18,35 +18,8 @@ window.onload = function() {
     graphicsContext = canvas.getContext('2d');
     canvasWidth = canvas.width;
     canvasHeight = canvas.height;
-    player = new Player(350, 300);
-    keyState = {};
-    _.each(_.values(keys), function(key) { 
-        keyState[key] = false; 
-    });
-
-    keyPressed = function(e) {
-        var key = _.findKey(keys, function(x) {
-            return x == e.keyCode;
-        });
-        if (key) {
-            keyState[key] = true;
-        }
-        else {
-            console.log('Pressed ' + e.keyCode);
-        }
-    };
-
-    keyReleased = function(e) {
-        var key = _.findKey(keys, function(x) {
-            return x == e.keyCode;
-        });
-        if (key) {
-            keyState[key] = false;
-        }
-        else {
-            console.log('Released ' + e.keyCode);
-        }
-    };
+    player = new Player(350, 300); 
+    configureInput();
 
     function update() {
         player.update();
