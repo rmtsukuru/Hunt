@@ -9,7 +9,6 @@ var keys = {
 
 var canvas, graphicsContext;
 var mainLoop;
-var keyState;
 
 var player;
 

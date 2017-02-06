@@ -1,3 +1,5 @@
+var keyState;
+
 function configureInput() {
     keyState = {};
     _.each(_.values(keys), function(key) { 
