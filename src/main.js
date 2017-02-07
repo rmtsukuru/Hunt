@@ -6,7 +6,7 @@ var entities = [];
 window.onload = function() {
     player = new Player(350, 300); 
     entities.push(player);
-    beast = new Beast(480, 792);
+    beast = new Beast(480, 632);
     entities.push(beast);
     configureGraphics();
     configureInput();

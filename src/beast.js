@@ -1,5 +1,5 @@
 const BEAST_SPEED = 3;
-const BEAST_TIMER_FRAMES = 90;
+const BEAST_TIMER_FRAMES = 30;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
@@ -12,19 +12,19 @@ function Beast(x, y) {
 Beast.prototype = Object.create(Entity.prototype);
 
 Beast.prototype.think = function() {
+    this.xVelocity = 0;
+    this.yVelocity = 0;
     if (Math.random() < 0.6) {
-        if (Math.random() < 0.5) {
-            this.yVelocity = 0;
+        if (Math.random() <= 0.5) {
             this.xVelocity = BEAST_SPEED;
             if (Math.random() < 0.5) {
                 this.xVelocity *= -1;
             }
         }
         else {
-            this.xVelocity = 0;
             this.yVelocity = BEAST_SPEED;
-            if (Math.random() < 0.5) {
-                this.xVelocity *= -1;
+            if (Math.random() <= 0.5) {
+                this.yVelocity *= -1;
             }
         }
     }
