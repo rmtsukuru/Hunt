@@ -12,16 +12,16 @@ Player.prototype = Object.create(Entity.prototype);
 Player.prototype.update = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
-    if (keyState.left) {
+    if (keyState.left || keyState.a) {
         this.xVelocity -= PLAYER_SPEED;
     }
-    if (keyState.right) {
+    if (keyState.right || keyState.d) {
         this.xVelocity += PLAYER_SPEED;
     }
-    if (keyState.up) {
+    if (keyState.up || keyState.w) {
         this.yVelocity -= PLAYER_SPEED;
     }
-    if (keyState.down) {
+    if (keyState.down || keyState.s) {
         this.yVelocity += PLAYER_SPEED;
     }
     handleTileCollision(this);
