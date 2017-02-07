@@ -26,6 +26,7 @@ var keyPressed = function(e) {
     });
     if (key) {
         keyState[key] = true;
+        e.preventDefault();
     }
     else {
         console.log('Pressed ' + e.keyCode);
