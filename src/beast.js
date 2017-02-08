@@ -1,10 +1,12 @@
 const BEAST_SPEED = 3;
 const BEAST_TIMER_FRAMES = 30;
+const BEAST_HP = 200;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
-    this.size = 32;
+    this.width = this.height = 32;
     this.color = '#224';
+    this.health = BEAST_HP;
     this.thoughtTimer = 0;
     this.yVelocity = BEAST_SPEED;
 }
@@ -40,5 +42,13 @@ Beast.prototype.update = function() {
         this.thoughtTimer--;
     }
     handleTileCollision(this);
+    handleEntityCollision(this);
     Entity.prototype.update.call(this);
+};
+
+Beast.prototype.handleEntityCollision = function(entity) {
+    if (entity.active) {
+        this.health -= entity.damage(this);
+    }
+    console.log('Beast HP: ' + this.health);
 };

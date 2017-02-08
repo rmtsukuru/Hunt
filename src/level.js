@@ -1,3 +1,5 @@
+var entities = [];
+
 function drawBackgroundTiles() {
     for (var i = 0; i < tiles.length; i++) {
         for (var j = 0; j < tiles[i].length; j++) {
@@ -113,5 +115,17 @@ function getCollisionYVelocity(entity) {
 function handleTileCollision(entity) {
     entity.xVelocity = getCollisionXVelocity(entity);
     entity.yVelocity = getCollisionYVelocity(entity);
+}
+
+function areColliding(a, b) {
+    return a.x < b.x + b.width && b.x < a.x + a.width && a.y < b.y + b.height && b.y < a.y + a.height;
+};
+
+function handleEntityCollision(entity) {
+    entities.forEach(function(x, i) {
+        if (entity != x && areColliding(entity, x)) {
+            entity.handleEntityCollision(x);
+        }
+    });
 }
 

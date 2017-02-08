@@ -1,7 +1,6 @@
 const FPS = 60;
 var mainLoop;
 var player, beast;
-var entities = [];
 
 window.onload = function() {
     player = new Player(350, 300); 
