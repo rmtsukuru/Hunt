@@ -34,7 +34,7 @@ Player.prototype.update = function() {
                 sword = new Sword(this.x + 12, this.y - 32);
             }
             else {
-                sword = new Sword(this.x + 20, this.y + 32);
+                sword = new Sword(this.x + 12, this.y + 32);
             }
             entities.unshift(sword);
             this.swordDrawn = true;
