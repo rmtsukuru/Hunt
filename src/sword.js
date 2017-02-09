@@ -1,5 +1,5 @@
 const SWORD_TIMER_FRAMES = 5;
-const SWORD_TTL_FRAMES = 15;
+const SWORD_TTL_FRAMES = 10;
 const SWORD_DAMAGE = 10;
 const SWORD_LENGTH = 30;
 const SWORD_WIDTH = 8;
