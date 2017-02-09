@@ -49,6 +49,6 @@ Beast.prototype.update = function() {
 Beast.prototype.handleEntityCollision = function(entity) {
     if (entity.active) {
         this.health -= entity.damage(this);
+        console.log('Beast HP: ' + this.health);
     }
-    console.log('Beast HP: ' + this.health);
 };
