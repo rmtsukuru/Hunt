@@ -19,7 +19,8 @@ window.onload = function() {
     }
 
     function drawHud() {
-        drawText('Facing: ' + player.facing, 5, 20, 'Cambria', '24px', '#2f2', true);
+        drawText('Facing: ' + player.facing, 2, 20, 'Cambria', '24px', '#2f2', true);
+        drawText('Beast HP: ' + beast.health, 2, 48, 'Cambria', '24px', '#2ff', true);
     }
 
     function draw() {
