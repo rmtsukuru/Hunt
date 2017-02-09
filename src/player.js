@@ -1,6 +1,5 @@
 const PLAYER_SPEED = 5;
 const PLAYER_SIZE = 32;
-const PLAYER_SWORD_FRAMES = 30;
 
 const directions = {
     left: 0,
@@ -14,7 +13,6 @@ function Player(x, y) {
     this.width = this.height = PLAYER_SIZE;
     this.color = '#a22';
     this.swordDrawn = false;
-    this.swordTimer = 0;
     this.facing = directions.down;
 }
 
@@ -23,15 +21,7 @@ Player.prototype = Object.create(Entity.prototype);
 Player.prototype.update = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
-    if (this.swordDrawn) {
-        if (this.swordTimer <= 0) {
-            this.swordDrawn = false;
-        }
-        else {
-            this.swordTimer--;
-        }
-    }
-    else {
+    if (!this.swordDrawn) {
         if (keyState.z) {
             var sword;
             if (this.facing == directions.left) {
@@ -48,7 +38,6 @@ Player.prototype.update = function() {
             }
             entities.unshift(sword);
             this.swordDrawn = true;
-            this.swordTimer = PLAYER_SWORD_FRAMES;
         }
         else {
             if (keyState.left || keyState.a) {
