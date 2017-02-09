@@ -11,6 +11,7 @@ window.onload = function() {
     configureInput();
 
     function update() {
+        updateInput();
         entities.forEach(function(entity, i) {
             entity.update();
         });
