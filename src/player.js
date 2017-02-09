@@ -22,7 +22,7 @@ Player.prototype.update = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
     if (!this.swordDrawn) {
-        if (keyState.z) {
+        if (triggerKeyState.z) {
             var sword;
             if (this.facing == directions.left) {
                 sword = new Sword(this.x - 32, this.y + 12, true);
