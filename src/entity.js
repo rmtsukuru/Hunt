@@ -25,7 +25,6 @@ Entity.prototype.handleEntityCollision = function(entity) {
 
 Entity.prototype.remove = function() {
     var index = entities.indexOf(this);
-    console.log(index);
     if (index >= 0) {
         entities.splice(index, 1);
     }
