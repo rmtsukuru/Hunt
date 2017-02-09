@@ -11,12 +11,14 @@ var keys = {
     space: 32
 };
 
-var keyState;
+var keyState, triggerKeyState;
 
 function configureInput() {
     keyState = {};
-    _.each(_.values(keys), function(key) { 
+    triggerKeyState = {};
+    _.values(keys).forEach(function(key) {
         keyState[key] = false; 
+        triggerKeyState[key] = false; 
     });
 }
 
@@ -25,6 +27,9 @@ var keyPressed = function(e) {
         return x == e.keyCode;
     });
     if (key) {
+        if (!keyState[key]) {
+            triggerKeyState[key] = true;
+        }
         keyState[key] = true;
         e.preventDefault();
     }
@@ -44,3 +49,9 @@ var keyReleased = function(e) {
         console.log('Released ' + e.keyCode);
     }
 };
+
+function updateInput() {
+    _.values(keys).forEach(function(key) {
+        triggerKeyState[key] = false; 
+    });
+}
