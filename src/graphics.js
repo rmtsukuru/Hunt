@@ -25,6 +25,17 @@ function drawRect(x, y, width, height, color, ignoreCamera) {
     }
 }
 
+function drawText(text, x, y, font, fontSize, color, ignoreCamera) {
+    graphicsContext.font = fontSize + ' ' + font;
+    graphicsContext.fillStyle = color;
+    if (ignoreCamera) {
+        graphicsContext.fillText(text, x, y);
+    }
+    else {
+        graphicsContext.fillText(text, x - cameraX, y - cameraY);
+    }
+}
+
 function updateCamera(target) {
     cameraX = target.x - canvasWidth / 2;
     cameraY = target.y - canvasHeight / 2;

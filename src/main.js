@@ -18,6 +18,10 @@ window.onload = function() {
         updateCamera(player);
     }
 
+    function drawHud() {
+        drawText('Facing: ' + player.facing, 5, 20, 'Cambria', '24px', '#2f2', true);
+    }
+
     function draw() {
         drawRect(0, 0, canvasWidth, canvasHeight, '#98b', true);
         drawBackgroundTiles();
@@ -25,6 +29,7 @@ window.onload = function() {
             entity.draw();
         });
         drawForegroundTiles();
+        drawHud();
     }
 
     mainLoop = function() {
