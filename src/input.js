@@ -16,7 +16,7 @@ var keyState, triggerKeyState;
 function configureInput() {
     keyState = {};
     triggerKeyState = {};
-    _.values(keys).forEach(function(key) {
+    _.keys(keys).forEach(function(key) {
         keyState[key] = false; 
         triggerKeyState[key] = false; 
     });
@@ -51,7 +51,7 @@ var keyReleased = function(e) {
 };
 
 function updateInput() {
-    _.values(keys).forEach(function(key) {
+    _.keys(keys).forEach(function(key) {
         triggerKeyState[key] = false; 
     });
 }
