@@ -13,8 +13,30 @@ function Beast(x, y) {
 
 Beast.prototype = Object.create(Entity.prototype);
 
-Beast.prototype.speed = function() {
+Beast.prototype.moveChance = function() {
+    if (this.health <= 0.25 * BEAST_HP) {
+        return 0.3;
+    }
+    else {
+        return 0.6;
+    }
+}
+
+
+Beast.prototype.timerFrames = function() {
     if (this.health < 0.5 * BEAST_HP) {
+        return BEAST_TIMER_FRAMES / 2;
+    }
+    else {
+        return BEAST_TIMER_FRAMES;
+    }
+}
+
+Beast.prototype.speed = function() {
+    if (this.health <= 0.25 * BEAST_HP) {
+        return BEAST_SPEED / 2;
+    }
+    else if (this.health < 0.5 * BEAST_HP) {
         return 2 * BEAST_SPEED;
     }
     else {
@@ -25,15 +47,15 @@ Beast.prototype.speed = function() {
 Beast.prototype.think = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
-    if (Math.random() < 0.6) {
+    if (Math.random() < this.moveChance()) {
         if (Math.random() <= 0.5) {
-            this.xVelocity = BEAST_SPEED;
+            this.xVelocity = this.speed();
             if (Math.random() < 0.5) {
                 this.xVelocity *= -1;
             }
         }
         else {
-            this.yVelocity = BEAST_SPEED;
+            this.yVelocity = this.speed();
             if (Math.random() <= 0.5) {
                 this.yVelocity *= -1;
             }
@@ -45,7 +67,7 @@ Beast.prototype.update = function() {
     // Handle speed and such.
     if (this.thoughtTimer <= 0) {
         this.think();
-        this.thoughtTimer = BEAST_TIMER_FRAMES;
+        this.thoughtTimer = this.timerFrames();
     }
     else {
         this.thoughtTimer--;
