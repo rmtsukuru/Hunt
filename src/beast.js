@@ -13,6 +13,15 @@ function Beast(x, y) {
 
 Beast.prototype = Object.create(Entity.prototype);
 
+Beast.prototype.speed = function() {
+    if (this.health < 0.5 * BEAST_HP) {
+        return 2 * BEAST_SPEED;
+    }
+    else {
+        return BEAST_SPEED;
+    }
+};
+
 Beast.prototype.think = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
