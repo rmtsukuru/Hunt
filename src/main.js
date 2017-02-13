@@ -3,7 +3,7 @@ var mainLoop;
 var player, beast;
 
 window.onload = function() {
-    player = new Player(350, 300); 
+    player = new Player(2400, 6000); 
     entities.push(player);
     beast = new Beast(480, 632);
     entities.push(beast);
@@ -19,7 +19,7 @@ window.onload = function() {
     }
 
     function drawHud() {
-        drawText('Facing: ' + player.facing, 2, 20, 'Cambria', '24px', '#2f2', true);
+        drawText('X: ' + player.x + ' Y: ' + player.y, 2, 20, 'Cambria', '24px', '#2f2', true);
         drawText('Beast HP: ' + beast.health, 2, 48, 'Cambria', '24px', '#2ff', true);
     }
 
