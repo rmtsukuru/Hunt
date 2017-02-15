@@ -21,7 +21,7 @@ function drawForegroundTiles() {
 }
 
 function passableTileValue(x) {
-    return value == 0 || value == 2;
+    return x == 0 || x == 2;
 }
 
 function isTilePassable(j, i) {
