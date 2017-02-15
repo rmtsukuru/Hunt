@@ -3,10 +3,13 @@ var entities = [];
 function drawTile(j, i, x) {
     switch(x) {
         case 1:
-            drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#f00');
+            drawImage('tree-tile1.png', j * TILE_SIZE, i * TILE_SIZE);
             break;
         case 2:
             drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#00f');
+            break;
+        case 3:
+            drawImage('tree-tile0.png', j * TILE_SIZE, i * TILE_SIZE);
             break;
     }
 }
@@ -14,8 +17,8 @@ function drawTile(j, i, x) {
 function drawBackgroundTiles() {
     for (var i = 0; i < tiles.length; i++) {
         for (var j = 0; j < tiles[i].length; j++) {
-            if (tiles[i][j] == 1) {
-                drawTile(j, i, 1);
+            if (tiles[i][j] == 1 || tiles[i][j] == 3) {
+                drawTile(j, i, tiles[i][j]);
             }
         }
     }

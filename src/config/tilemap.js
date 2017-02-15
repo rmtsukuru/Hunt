@@ -19,7 +19,7 @@ function insertTree(j, i) {
     tiles[i+1][j+1] = 2;
     tiles[i+1][j+2] = 2;
     tiles[i+2][j+1] = 1;
-    tiles[i+3][j+1] = 1;
+    tiles[i+3][j+1] = 3;
 }
 
 insertTree(72, 194);
