@@ -14,10 +14,14 @@ function drawTile(j, i, x) {
     }
 }
 
+function passableTileValue(x) {
+    return x == 0 || x == 2;
+}
+
 function drawBackgroundTiles() {
     for (var i = 0; i < tiles.length; i++) {
         for (var j = 0; j < tiles[i].length; j++) {
-            if (tiles[i][j] == 1 || tiles[i][j] == 3) {
+            if (!passableTileValue(tiles[i][j])) {
                 drawTile(j, i, tiles[i][j]);
             }
         }
@@ -27,15 +31,11 @@ function drawBackgroundTiles() {
 function drawForegroundTiles() {
     for (var i = 0; i < tiles.length; i++) {
         for (var j = 0; j < tiles[i].length; j++) {
-            if (tiles[i][j] == 2) {
-                drawTile(j, i, 2);
+            if (passableTileValue(tiles[i][j])) {
+                drawTile(j, i, tiles[i][j]);
             }
         }
     }
-}
-
-function passableTileValue(x) {
-    return x == 0 || x == 2;
 }
 
 function isTilePassable(j, i) {
