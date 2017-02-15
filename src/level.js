@@ -1,10 +1,21 @@
 var entities = [];
 
+function drawTile(j, i, x) {
+    switch(x) {
+        case 1:
+            drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#f00');
+            break;
+        case 2:
+            drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#00f');
+            break;
+    }
+}
+
 function drawBackgroundTiles() {
     for (var i = 0; i < tiles.length; i++) {
         for (var j = 0; j < tiles[i].length; j++) {
             if (tiles[i][j] == 1) {
-                drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#f00');
+                drawTile(j, i, 1);
             }
         }
     }
@@ -14,7 +25,7 @@ function drawForegroundTiles() {
     for (var i = 0; i < tiles.length; i++) {
         for (var j = 0; j < tiles[i].length; j++) {
             if (tiles[i][j] == 2) {
-                drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#00f');
+                drawTile(j, i, 2);
             }
         }
     }
