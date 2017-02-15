@@ -20,12 +20,16 @@ function drawForegroundTiles() {
     }
 }
 
+function passableTileValue(x) {
+    return value == 0 || value == 2;
+}
+
 function isTilePassable(j, i) {
     if (i < 0 || j < 0 || i >= tiles.length || j >= tiles[i].length) {
         return false;
     }
     var value = tiles[i][j];
-    return value == 0 || value == 2;
+    return passableTileValue(value);
 }
 
 function tileIndex(x) {
