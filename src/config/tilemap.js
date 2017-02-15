@@ -24,6 +24,10 @@ function insertTree(j, i) {
 
 insertTree(72, 194);
 insertTree(78, 192);
+insertTree(65, 183);
+insertTree(70, 180);
+insertTree(75, 177);
+insertTree(82, 182);
 
 console.log('Rows: ' + tiles.length + ' Columns: ' + tiles[0].length);
 const TILE_SIZE = 32;
