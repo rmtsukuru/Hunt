@@ -5,7 +5,7 @@ var player, beast;
 window.onload = function() {
     player = new Player(2400, 6000); 
     entities.push(player);
-    beast = new Beast(480, 632);
+    beast = new Beast(2200, 3000);
     entities.push(beast);
     configureGraphics();
     configureInput();
