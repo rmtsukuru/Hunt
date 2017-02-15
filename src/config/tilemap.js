@@ -29,5 +29,4 @@ insertTree(70, 180);
 insertTree(75, 177);
 insertTree(82, 182);
 
-console.log('Rows: ' + tiles.length + ' Columns: ' + tiles[0].length);
 const TILE_SIZE = 32;
