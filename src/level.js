@@ -6,7 +6,7 @@ function drawTile(j, i, x) {
             drawImage('tree-tile1.png', j * TILE_SIZE, i * TILE_SIZE);
             break;
         case 2:
-            drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#00f');
+            drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#1A2821');
             break;
         case 3:
             drawImage('tree-tile0.png', j * TILE_SIZE, i * TILE_SIZE);
