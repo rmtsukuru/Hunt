@@ -24,7 +24,7 @@ window.onload = function() {
     }
 
     function draw() {
-        drawRect(0, 0, canvasWidth, canvasHeight, '#98b', true);
+        drawRect(0, 0, canvasWidth, canvasHeight, '#7898A7', true);
         drawBackgroundTiles();
         entities.forEach(function(entity, i) {
             entity.draw();
