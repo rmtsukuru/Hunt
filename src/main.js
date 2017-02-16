@@ -9,6 +9,7 @@ window.onload = function() {
     entities.push(beast);
     configureGraphics();
     configureInput();
+    configureAudio();
 
     function update() {
         entities.forEach(function(entity, i) {

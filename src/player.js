@@ -37,6 +37,7 @@ Player.prototype.update = function() {
                 sword = new Sword(this.x + 12, this.y + 32);
             }
             entities.unshift(sword);
+            playSound('slice1');
             this.swordDrawn = true;
         }
         else {
