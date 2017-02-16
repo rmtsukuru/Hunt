@@ -1,6 +1,7 @@
 const BEAST_SPEED = 3;
 const BEAST_TIMER_FRAMES = 30;
 const BEAST_HP = 200;
+const SPOT_RADIUS = 200;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
@@ -9,6 +10,7 @@ function Beast(x, y) {
     this.health = BEAST_HP;
     this.thoughtTimer = 0;
     this.yVelocity = BEAST_SPEED;
+    this.spotted = false;
 }
 
 Beast.prototype = Object.create(Entity.prototype);
@@ -44,22 +46,31 @@ Beast.prototype.speed = function() {
     }
 };
 
+Beast.prototype.distanceFromPlayer = function() {
+    return Math.round(Math.sqrt(Math.pow(this.x - player.x, 2) + Math.pow(this.y - player.y, 2)));
+};
+
 Beast.prototype.think = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
-    if (Math.random() < this.moveChance()) {
-        if (Math.random() <= 0.5) {
-            this.xVelocity = this.speed();
-            if (Math.random() < 0.5) {
-                this.xVelocity *= -1;
-            }
-        }
-        else {
-            this.yVelocity = this.speed();
+    if (this.spotted) {
+        if (Math.random() < this.moveChance()) {
             if (Math.random() <= 0.5) {
-                this.yVelocity *= -1;
+                this.xVelocity = this.speed();
+                if (Math.random() < 0.5) {
+                    this.xVelocity *= -1;
+                }
+            }
+            else {
+                this.yVelocity = this.speed();
+                if (Math.random() <= 0.5) {
+                    this.yVelocity *= -1;
+                }
             }
         }
+    }
+    else if (this.distanceFromPlayer() < SPOT_RADIUS) {
+        this.spotted = true;
     }
 };
 
