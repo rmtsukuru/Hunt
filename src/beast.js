@@ -2,15 +2,16 @@ const BEAST_SPEED = 3;
 const BEAST_TIMER_FRAMES = 30;
 const BEAST_HP = 200;
 const SPOT_RADIUS = 200;
+const FLASH_TIMER_FRAMES = 5;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
     this.width = this.height = 32;
-    this.color = '#224';
     this.health = BEAST_HP;
     this.thoughtTimer = 0;
     this.yVelocity = BEAST_SPEED;
     this.spotted = false;
+    this.flashTimer = 0;
 }
 
 Beast.prototype = Object.create(Entity.prototype);
@@ -83,6 +84,13 @@ Beast.prototype.update = function() {
     else {
         this.thoughtTimer--;
     }
+    if (this.flashTimer > 0) {
+        this.color = '#f22';
+        this.flashTimer--;
+    }
+    else{
+        this.color = '#224';
+    }
     handleTileCollision(this);
     handleEntityCollision(this);
     Entity.prototype.update.call(this);
@@ -94,6 +102,7 @@ Beast.prototype.handleEntityCollision = function(entity) {
         this.health -= entity.damage(this);
         if (this.health != startingHealth) {
             playSound('hit1');
+            this.flashTimer = FLASH_TIMER_FRAMES;
         }
     }
 };
