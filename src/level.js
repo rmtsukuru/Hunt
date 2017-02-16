@@ -3,19 +3,19 @@ var entities = [];
 function drawTile(j, i, x) {
     switch(x) {
         case 1:
-            drawImage('tree-tile1.png', j * TILE_SIZE, i * TILE_SIZE);
+            drawImage('tree-tile0.png', j * TILE_SIZE, i * TILE_SIZE);
             break;
         case 2:
             drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#1A2821');
             break;
         case 3:
-            drawImage('tree-tile0.png', j * TILE_SIZE, i * TILE_SIZE);
+            drawImage('tree-tile1.png', j * TILE_SIZE, i * TILE_SIZE);
             break;
     }
 }
 
 function passableTileValue(x) {
-    return x == 0 || x == 2;
+    return x == 0 || x == 2 || x == 3;
 }
 
 function drawBackgroundTiles() {
