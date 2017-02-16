@@ -93,7 +93,7 @@ Beast.prototype.handleEntityCollision = function(entity) {
         var startingHealth = this.health;
         this.health -= entity.damage(this);
         if (this.health != startingHealth) {
-            console.log('Beast HP: ' + this.health);
+            playSound('hit1');
         }
     }
 };
