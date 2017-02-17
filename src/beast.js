@@ -72,6 +72,7 @@ Beast.prototype.think = function() {
     }
     else if (this.distanceFromPlayer() < SPOT_RADIUS) {
         this.spotted = true;
+        playSound('large_wolf_howl0');
     }
 };
 
