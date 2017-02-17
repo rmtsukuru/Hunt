@@ -32,6 +32,7 @@ window.onload = function() {
             entity.draw();
         });
         drawForegroundTiles();
+        drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(50, 0, 130, 0.5)', true);
         drawHud();
     }
 
