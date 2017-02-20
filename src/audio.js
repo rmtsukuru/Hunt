@@ -14,7 +14,10 @@ function configureAudio() {
     setFormat();
 }
 
-function playSound(filename) {
+function playSound(filename, volume) {
     var sound = new Audio('audio/' + filename + audioFormat);
+    if (volume) {
+        sound.volume = volume;
+    }
     sound.play();
 }
