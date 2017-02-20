@@ -12,13 +12,13 @@ for (var i = 0; i < mapTileHeight; i++) {
 
 // Places a tree at the specified at the specified x,y tile position, indexed at the top-left corner.
 function insertTree(j, i) {
-    tiles[i][j] = 2;
-    tiles[i][j+1] = 2;
-    tiles[i][j+2] = 2;
-    tiles[i+1][j] = 2;
-    tiles[i+1][j+1] = 2;
-    tiles[i+1][j+2] = 2;
-    tiles[i+2][j+1] = 3;
+    tiles[i][j] = 6;
+    tiles[i][j+1] = 7;
+    tiles[i][j+2] = 8;
+    tiles[i+1][j] = 3;
+    tiles[i+1][j+1] = 4;
+    tiles[i+1][j+2] = 5;
+    tiles[i+2][j+1] = 2;
     tiles[i+3][j+1] = 1;
 }
 

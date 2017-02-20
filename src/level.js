@@ -6,16 +6,31 @@ function drawTile(j, i, x) {
             drawImage('tree-tile0.png', j * TILE_SIZE, i * TILE_SIZE);
             break;
         case 2:
-            drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, TILE_SIZE, '#1A2821');
+            drawImage('tree-tile1.png', j * TILE_SIZE, i * TILE_SIZE);
             break;
         case 3:
-            drawImage('tree-tile1.png', j * TILE_SIZE, i * TILE_SIZE);
+            drawImage('tree-tile2.png', j * TILE_SIZE, i * TILE_SIZE);
+            break;
+        case 4:
+            drawImage('tree-tile3.png', j * TILE_SIZE, i * TILE_SIZE);
+            break;
+        case 5:
+            drawImage('tree-tile4.png', j * TILE_SIZE, i * TILE_SIZE);
+            break;
+        case 6:
+            drawImage('tree-tile5.png', j * TILE_SIZE, i * TILE_SIZE);
+            break;
+        case 7:
+            drawImage('tree-tile6.png', j * TILE_SIZE, i * TILE_SIZE);
+            break;
+        case 8:
+            drawImage('tree-tile7.png', j * TILE_SIZE, i * TILE_SIZE);
             break;
     }
 }
 
 function passableTileValue(x) {
-    return x == 0 || x == 2 || x == 3;
+    return x == 0 || x > 1;
 }
 
 function drawBackgroundTiles() {
