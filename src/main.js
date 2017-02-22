@@ -1,4 +1,3 @@
-const FPS = 60;
 var mainLoop;
 var player, beast;
 
@@ -7,11 +6,12 @@ window.onload = function() {
     entities.push(player);
     beast = new Beast(2200, 3000);
     entities.push(beast);
-    configureGraphics();
+    configureGraphics(player);
     configureInput();
     configureAudio();
+    scene = new TransitionScene();
 
-    function update() {
+    update = function() {
         entities.forEach(function(entity, i) {
             entity.update();
         });
@@ -25,7 +25,7 @@ window.onload = function() {
         drawText('Beast Distance: ' + beast.distanceFromPlayer(), 2, 76, 'Cambria', '24px', '#e88', true);
     }
 
-    function draw() {
+    draw = function() {
         drawRect(0, 0, canvasWidth, canvasHeight, '#7898A7', true);
         drawBackgroundTiles();
         entities.forEach(function(entity, i) {
@@ -37,8 +37,8 @@ window.onload = function() {
     }
 
     mainLoop = function() {
-        update();
-        draw();
+        scene.update();
+        scene.draw();
     };
     
     document.addEventListener("keydown", keyPressed);

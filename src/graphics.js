@@ -9,6 +9,8 @@ var mapHeight = tiles.length * TILE_SIZE;
 
 var images = {};
 
+var updateCamera;
+
 function loadImage(filename) {
     var image = {loaded: false};
     image.data = document.createElement('img');
@@ -34,11 +36,15 @@ function fetchImage(filename) {
     }
 }
 
-function configureGraphics() {
+function configureGraphics(player) {
     canvas = document.getElementById('gameCanvas');
     graphicsContext = canvas.getContext('2d');
     canvasWidth = canvas.width;
     canvasHeight = canvas.height;
+
+    if (player) {
+        updateCamera(player);
+    }
 }
 
 function drawImage(filename, x, y, ignoreCamera) {
@@ -74,7 +80,7 @@ function drawText(text, x, y, font, fontSize, color, ignoreCamera) {
     }
 }
 
-function updateCamera(target) {
+updateCamera = function(target) {
     cameraX = target.x - canvasWidth / 2;
     cameraY = target.y - canvasHeight / 2;
 
