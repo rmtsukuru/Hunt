@@ -1,10 +1,10 @@
 const BEAST_SPEED = 3;
 const BEAST_RUN_SPEED = 8;
-const BEAST_TIMER_FRAMES = 30;
-const BEAST_RUN_TIMER_FRAMES = 48;
+const BEAST_TIMER_FRAMES = 0.5 * FPS;
+const BEAST_RUN_TIMER_FRAMES = 0.8 * FPS;
 const BEAST_HP = 200;
 const SPOT_RADIUS = 200;
-const FLASH_TIMER_FRAMES = 5;
+const FLASH_TIMER_FRAMES = FPS / 12;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
