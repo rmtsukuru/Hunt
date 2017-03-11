@@ -1,5 +1,7 @@
 const BEAST_SPEED = 3;
+const BEAST_RUN_SPEED = 8;
 const BEAST_TIMER_FRAMES = 30;
+const BEAST_RUN_TIMER_FRAMES = 48;
 const BEAST_HP = 200;
 const SPOT_RADIUS = 200;
 const FLASH_TIMER_FRAMES = 5;
@@ -12,6 +14,7 @@ function Beast(x, y) {
     this.yVelocity = BEAST_SPEED;
     this.spotted = false;
     this.flashTimer = 0;
+    this.runTimer = 0;
 }
 
 Beast.prototype = Object.create(Entity.prototype);
@@ -35,15 +38,28 @@ Beast.prototype.timerFrames = function() {
     }
 }
 
+Beast.prototype.runTimerFrames = function() {
+    return BEAST_RUN_TIMER_FRAMES;
+}
+
+Beast.prototype.running = function() {
+    return this.runTimer > 0;
+}
+
 Beast.prototype.speed = function() {
+    var baseSpeed = BEAST_SPEED;
+    if (this.running()) {
+        baseSpeed = BEAST_RUN_SPEED;
+    }
+
     if (this.health <= 0.25 * BEAST_HP) {
-        return BEAST_SPEED / 2;
+        return baseSpeed / 2;
     }
     else if (this.health < 0.5 * BEAST_HP) {
-        return 2 * BEAST_SPEED;
+        return 2 * baseSpeed;
     }
     else {
-        return BEAST_SPEED;
+        return baseSpeed;
     }
 };
 
@@ -51,23 +67,27 @@ Beast.prototype.distanceFromPlayer = function() {
     return Math.round(Math.sqrt(Math.pow(this.x - player.x, 2) + Math.pow(this.y - player.y, 2)));
 };
 
+Beast.prototype.turnRandomDirection = function() {
+    if (Math.random() <= 0.5) {
+        this.xVelocity = this.speed();
+        if (Math.random() < 0.5) {
+            this.xVelocity *= -1;
+        }
+    }
+    else {
+        this.yVelocity = this.speed();
+        if (Math.random() <= 0.5) {
+            this.yVelocity *= -1;
+        }
+    }
+};
+
 Beast.prototype.think = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
     if (this.spotted) {
         if (Math.random() < this.moveChance()) {
-            if (Math.random() <= 0.5) {
-                this.xVelocity = this.speed();
-                if (Math.random() < 0.5) {
-                    this.xVelocity *= -1;
-                }
-            }
-            else {
-                this.yVelocity = this.speed();
-                if (Math.random() <= 0.5) {
-                    this.yVelocity *= -1;
-                }
-            }
+            this.turnRandomDirection();
         }
     }
     else if (this.distanceFromPlayer() < SPOT_RADIUS) {
@@ -78,7 +98,10 @@ Beast.prototype.think = function() {
 
 Beast.prototype.update = function() {
     // Handle speed and such.
-    if (this.thoughtTimer <= 0) {
+    if (this.running()) {
+        this.runTimer--;
+    }
+    else if (this.thoughtTimer <= 0) {
         this.think();
         this.thoughtTimer = this.timerFrames();
     }
@@ -104,6 +127,8 @@ Beast.prototype.handleEntityCollision = function(entity) {
         if (this.health != startingHealth) {
             playSound('hit1');
             this.flashTimer = FLASH_TIMER_FRAMES;
+            this.runTimer = this.runTimerFrames();
+            this.turnRandomDirection();
         }
     }
 };
