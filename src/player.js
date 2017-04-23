@@ -1,5 +1,6 @@
 const PLAYER_SPEED = 5;
 const PLAYER_SIZE = 32;
+const PLAYER_SPRITE_MULTIPLIER = 0.5;
 
 const directions = {
     left: 0,
@@ -74,4 +75,18 @@ Player.prototype.update = function() {
     }
     handleTileCollision(this);
     Entity.prototype.update.call(this);
+};
+
+Player.prototype.draw = function() {
+    var image = 'player0.png';
+    if (this.facing == directions.left) {
+        image = 'player1.png';
+    }
+    else if (this.facing == directions.up) {
+        image = 'player2.png';
+    }
+    else if (this.facing == directions.right) {
+        image = 'player3.png';
+    }
+    drawImage(image, this.x, this.y - (PLAYER_SIZE * PLAYER_SPRITE_MULTIPLIER));
 };
