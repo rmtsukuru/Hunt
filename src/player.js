@@ -52,7 +52,7 @@ Player.prototype.update = function() {
                 sword = new Sword(this.x + 12, this.y + 32);
             }
             entities.unshift(sword);
-            playSound('slice1', 0.5);
+            playSound('slice2', 0.5);
             this.swordDrawn = true;
         }
         else {
