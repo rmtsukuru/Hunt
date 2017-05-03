@@ -52,7 +52,10 @@ Beast.prototype.speed = function() {
         baseSpeed = BEAST_RUN_SPEED;
     }
 
-    if (this.health <= 0.25 * BEAST_HP) {
+    if (this.health <= 0) {
+        return 0;
+    }
+    else if (this.health <= 0.25 * BEAST_HP) {
         return baseSpeed / 2;
     }
     else if (this.health < 0.5 * BEAST_HP) {
