@@ -3,9 +3,9 @@ var player, beast;
 
 window.onload = function() {
     player = new Player(2400, 6000); 
-    entities.push(player);
     beast = new Beast(2200, 3000);
     entities.push(beast);
+    entities.push(player);
     configureGraphics(player);
     configureInput();
     configureAudio();
