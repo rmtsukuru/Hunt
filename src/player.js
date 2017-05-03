@@ -27,10 +27,10 @@ Player.prototype = Object.create(Entity.prototype);
 Player.prototype.preloadImages = function() {
     for (var i = 0; i < PLAYER_FRAME_COUNT; i++) {
         loadImage('player0' + i + '.png');
+        loadImage('player1' + i + '.png');
+        loadImage('player3' + i + '.png');
     }
-    loadImage('player1.png');
     loadImage('player2.png');
-    loadImage('player3.png');
 }
 
 Player.prototype.update = function() {
