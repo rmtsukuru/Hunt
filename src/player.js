@@ -108,13 +108,13 @@ Player.prototype.update = function() {
 Player.prototype.draw = function() {
     var image;
     if (this.facing == directions.left) {
-        image = 'player1.png';
+        image = 'player1' + this.animationFrame + '.png';
     }
     else if (this.facing == directions.up) {
         image = 'player2.png';
     }
     else if (this.facing == directions.right) {
-        image = 'player3.png';
+        image = 'player3' + this.animationFrame + '.png';
     }
     else {
         image = 'player0' + this.animationFrame + '.png';
