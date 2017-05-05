@@ -28,9 +28,9 @@ Player.prototype.preloadImages = function() {
     for (var i = 0; i < PLAYER_FRAME_COUNT; i++) {
         loadImage('player0' + i + '.png');
         loadImage('player1' + i + '.png');
+        loadImage('player2' + i + '.png');
         loadImage('player3' + i + '.png');
     }
-    loadImage('player2.png');
 }
 
 Player.prototype.update = function() {
@@ -111,7 +111,7 @@ Player.prototype.draw = function() {
         image = 'player1' + this.animationFrame + '.png';
     }
     else if (this.facing == directions.up) {
-        image = 'player2.png';
+        image = 'player2' + this.animationFrame + '.png';
     }
     else if (this.facing == directions.right) {
         image = 'player3' + this.animationFrame + '.png';
