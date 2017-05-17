@@ -58,7 +58,7 @@ Sword.prototype.draw = function() {
         else {
             image = 'sword02.png';
         }
-        drawImage(image, this.x - 12, this.y);
+        drawImage(image, this.x - 10, this.y);
     }
     else if (this.active) {
         Entity.prototype.draw.call(this);

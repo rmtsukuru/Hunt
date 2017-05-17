@@ -46,10 +46,10 @@ Player.prototype.update = function() {
                 sword = new Sword(this.x + 32, this.y + 12, true);
             }
             else if (this.facing == directions.up) {
-                sword = new Sword(this.x + 12, this.y - 32);
+                sword = new Sword(this.x + 10, this.y - 32);
             }
             else {
-                sword = new Sword(this.x + 12, this.y + 32);
+                sword = new Sword(this.x + 10, this.y + 32);
             }
             entities.unshift(sword);
             playSound('slice2', 0.5);
