@@ -1,5 +1,6 @@
 const SWORD_TIMER_FRAMES = 5;
 const SWORD_TTL_FRAMES = 10;
+const SWORD_ANIMATION_CUTOFF = 8;
 const SWORD_DAMAGE = 10;
 const SWORD_LENGTH = 30;
 const SWORD_WIDTH = 8;
@@ -46,7 +47,20 @@ Sword.prototype.update = function() {
 };
 
 Sword.prototype.draw = function() {
-    if (this.active) {
+    if (player.facing == directions.up) {
+        var image;
+        if (!this.active) {
+            image = 'sword00.png';
+        }
+        else if (this.lifeTimer > SWORD_ANIMATION_CUTOFF) {
+            image = 'sword01.png';
+        }
+        else {
+            image = 'sword02.png';
+        }
+        drawImage(image, this.x - 12, this.y);
+    }
+    else if (this.active) {
         Entity.prototype.draw.call(this);
     }
 };
