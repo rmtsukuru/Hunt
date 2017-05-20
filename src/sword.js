@@ -47,21 +47,27 @@ Sword.prototype.update = function() {
 };
 
 Sword.prototype.draw = function() {
-    if (player.facing == directions.up) {
-        var image;
-        if (!this.active) {
-            image = 'sword00.png';
-        }
-        else if (this.lifeTimer > SWORD_ANIMATION_CUTOFF) {
-            image = 'sword01.png';
-        }
-        else {
-            image = 'sword02.png';
-        }
+    var image;
+    if (!this.active) {
+        image = 'sword' + player.facing + '0.png';
+    }
+    else if (this.lifeTimer > SWORD_ANIMATION_CUTOFF) {
+        image = 'sword' + player.facing + '1.png';
+    }
+    else {
+        image = 'sword' + player.facing + '2.png';
+    }
+    if (player.facing == directions.left) {
+        drawImage(image, this.x, this.y - 42);
+    }
+    else if (player.facing == directions.right) {
+        drawImage(image, this.x - 32, this.y - 42);
+    }
+    else if (player.facing == directions.up) {
         drawImage(image, this.x - 10, this.y);
     }
-    else if (this.active) {
-        Entity.prototype.draw.call(this);
+    else {
+        drawImage(image, this.x - 10, this.y - 32);
     }
 };
 
