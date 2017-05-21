@@ -76,24 +76,26 @@ Beast.prototype.distanceFromPlayer = function() {
 };
 
 Beast.prototype.turnRandomDirection = function() {
-    if (Math.random() <= 0.5) {
-        this.xVelocity = this.speed();
-        if (Math.random() < 0.5) {
-            this.xVelocity *= -1;
-            this.facing = directions.left;
-        }
-        else {
-            this.facing = directions.right;
-        }
-    }
-    else {
-        this.yVelocity = this.speed();
+    if (this.speed() > 0) {
         if (Math.random() <= 0.5) {
-            this.yVelocity *= -1;
-            this.facing = directions.up;
+            this.xVelocity = this.speed();
+            if (Math.random() < 0.5) {
+                this.xVelocity *= -1;
+                this.facing = directions.left;
+            }
+            else {
+                this.facing = directions.right;
+            }
         }
         else {
-            this.facing = directions.down;
+            this.yVelocity = this.speed();
+            if (Math.random() <= 0.5) {
+                this.yVelocity *= -1;
+                this.facing = directions.up;
+            }
+            else {
+                this.facing = directions.down;
+            }
         }
     }
 };
