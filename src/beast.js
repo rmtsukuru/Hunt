@@ -178,5 +178,5 @@ Beast.prototype.draw = function() {
     else if (this.facing == directions.left) {
         spriteIndex = 3;
     }
-    drawTiledImage(image, this.x, this.y - BEAST_SIZE, false, 0, spriteIndex * BEAST_SPRITE_HEIGHT, BEAST_SPRITE_WIDTH, BEAST_SPRITE_HEIGHT, 32, 48);
+    drawTiledImage(image, this.x - (BEAST_SIZE / 4), this.y - BEAST_SIZE, false, 0, spriteIndex * BEAST_SPRITE_HEIGHT, BEAST_SPRITE_WIDTH, BEAST_SPRITE_HEIGHT, 48, 64);
 };
