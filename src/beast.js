@@ -1,4 +1,7 @@
 const BEAST_SPEED = 3;
+const BEAST_SIZE = 32;
+const BEAST_SPRITE_WIDTH = 24;
+const BEAST_SPRITE_HEIGHT = 32;
 const BEAST_RUN_SPEED = 8;
 const BEAST_TIMER_FRAMES = 0.5 * FPS;
 const BEAST_RUN_TIMER_FRAMES = 0.8 * FPS;
@@ -9,7 +12,7 @@ const FLASH_TIMER_FRAMES = FPS / 12;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
-    this.width = this.height = 32;
+    this.width = this.height = BEAST_SIZE;
     this.health = BEAST_HP;
     this.thoughtTimer = 0;
     this.echolocateTimer = BEAST_ECHOLOCATE_TIMER_FRAMES;
@@ -77,12 +80,20 @@ Beast.prototype.turnRandomDirection = function() {
         this.xVelocity = this.speed();
         if (Math.random() < 0.5) {
             this.xVelocity *= -1;
+            this.facing = directions.left;
+        }
+        else {
+            this.facing = directions.right;
         }
     }
     else {
         this.yVelocity = this.speed();
         if (Math.random() <= 0.5) {
             this.yVelocity *= -1;
+            this.facing = directions.up;
+        }
+        else {
+            this.facing = directions.down;
         }
     }
 };
@@ -152,4 +163,20 @@ Beast.prototype.handleEntityCollision = function(entity) {
             this.turnRandomDirection();
         }
     }
+};
+
+Beast.prototype.draw = function() {
+    Entity.prototype.draw.call(this);
+    var image = 'sandy.png';
+    var spriteIndex = 0;
+    if (this.facing == directions.right) {
+        spriteIndex = 1;
+    }
+    else if (this.facing == directions.down) {
+        spriteIndex = 2;
+    }
+    else if (this.facing == directions.left) {
+        spriteIndex = 3;
+    }
+    drawTiledImage(image, this.x, this.y - BEAST_SIZE, false, 0, spriteIndex * BEAST_SPRITE_HEIGHT, BEAST_SPRITE_WIDTH, BEAST_SPRITE_HEIGHT, 32, 48);
 };
