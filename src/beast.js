@@ -166,7 +166,6 @@ Beast.prototype.handleEntityCollision = function(entity) {
 };
 
 Beast.prototype.draw = function() {
-    Entity.prototype.draw.call(this);
     var image = 'sandy.png';
     var spriteIndex = 0;
     if (this.facing == directions.right) {
