@@ -47,16 +47,22 @@ function configureGraphics(player) {
     }
 }
 
-function drawImage(filename, x, y, ignoreCamera) {
+function drawTiledImage(filename, x, y, ignoreCamera, sourceX, sourceY, sourceWidth, sourceHeight) {
     if (imageLoaded(filename)) {
         var image = fetchImage(filename);
+        sourceWidth = sourceWidth || image.width;
+        sourceHeight = sourceHeight || image.height;
         if (ignoreCamera) {
-            graphicsContext.drawImage(image, x, y);
+            graphicsContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x, y, image.width, image.height);
         }
         else {
-            graphicsContext.drawImage(image, x - cameraX, y - cameraY);
+            graphicsContext.drawImage(image, sourceX, sourceY, sourceWidth, sourceHeight, x - cameraX, y - cameraY, image.width, image.height);
         }
     }
+}
+
+function drawImage(filename, x, y, ignoreCamera) {
+    drawTiledImage(filename, x, y, ignoreCamera, 0, 0);
 }
 
 function drawRect(x, y, width, height, color, ignoreCamera) {
