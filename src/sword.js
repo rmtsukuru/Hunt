@@ -2,6 +2,7 @@ const SWORD_TIMER_FRAMES = 5;
 const SWORD_TTL_FRAMES = 10;
 const SWORD_ANIMATION_CUTOFF = 8;
 const SWORD_DAMAGE = 10;
+const SWORD_DEBUG_DAMAGE = 50;
 const SWORD_LENGTH = 30;
 const SWORD_WIDTH = 8;
 
@@ -81,5 +82,10 @@ Sword.prototype.damage = function(entity) {
     if (entity) {
         this.damagedTargets.push(entity);
     }
-    return SWORD_DAMAGE;
+    if (DEBUG_DAMAGE) {
+        return SWORD_DEBUG_DAMAGE;
+    }
+    else {
+        return SWORD_DAMAGE;
+    }
 }
