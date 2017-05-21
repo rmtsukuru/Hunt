@@ -104,7 +104,9 @@ Beast.prototype.think = function() {
 Beast.prototype.echolocate = function() {
     if (this.distanceFromPlayer() > SPOT_RADIUS) {
         if (this.echolocateTimer <= 0) {
-            playSound('large_wolf_howl0', SPOT_RADIUS / this.distanceFromPlayer());
+            if (!MUTE_ECHOLOCATION) {
+                playSound('large_wolf_howl0', SPOT_RADIUS / this.distanceFromPlayer());
+            }
             this.echolocateTimer = BEAST_ECHOLOCATE_TIMER_FRAMES;
         }
         this.echolocateTimer--;
