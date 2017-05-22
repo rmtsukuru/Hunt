@@ -158,7 +158,7 @@ Beast.prototype.handleEntityCollision = function(entity) {
     if (entity.active) {
         var startingHealth = this.health;
         this.health -= entity.damage(this);
-        if (this.health != startingHealth) {
+        if (this.health != startingHealth && startingHealth >= 0) {
             playSound('DogYip');
             this.flashTimer = FLASH_TIMER_FRAMES;
             this.runTimer = this.runTimerFrames();
