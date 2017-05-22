@@ -1,4 +1,5 @@
 const FADE_TIMER_FRAMES = 4 * FPS;
+const FADEOUT_TIMER_FRAMES = 4 * FPS;
 const UPDATE_THRESHOLD = 0.1;
 
 var scene;
@@ -23,6 +24,11 @@ GameScene.prototype = Object.create(Scene.prototype);
 
 GameScene.prototype.update = function() {
     update();
+    if (beast.health < 0) {
+        setTimeout(function() {
+            scene = new FadeoutScene();
+        }, 1500);
+    }
 };
 
 function TransitionScene(fadeOut) {
@@ -51,6 +57,33 @@ TransitionScene.prototype.fadeStrength = function() {
 };
 
 TransitionScene.prototype.draw = function() {
+    Scene.prototype.draw.call(this);
+    drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(0, 0, 0, ' + this.fadeStrength() + ')', true);
+};
+
+function FadeoutScene(fadeOut) {
+    Scene.call(this);
+    this.fadeOut = fadeOut;
+    this.fadeTimer = FADEOUT_TIMER_FRAMES;
+}
+
+FadeoutScene.prototype = Object.create(Scene.prototype);
+
+FadeoutScene.prototype.update = function() {
+    if (this.fadeTimer <= 0) {
+        // TODO figure out what needs to happen here (credits?)
+    }
+    else {
+        this.fadeTimer--;
+        update();
+    }
+};
+
+FadeoutScene.prototype.fadeStrength = function() {
+    return 1 - (this.fadeTimer / FADE_TIMER_FRAMES);
+};
+
+FadeoutScene.prototype.draw = function() {
     Scene.prototype.draw.call(this);
     drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(0, 0, 0, ' + this.fadeStrength() + ')', true);
 };
