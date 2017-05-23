@@ -20,6 +20,7 @@ function Beast(x, y) {
     this.spotted = false;
     this.flashTimer = 0;
     this.runTimer = 0;
+    this.filter = 'brightness(0)';
 }
 
 Beast.prototype = Object.create(Entity.prototype);
@@ -144,10 +145,12 @@ Beast.prototype.update = function() {
     this.echolocate();
     if (this.flashTimer > 0) {
         this.color = '#f22';
+        this.filter = 'contrast(0) sepia() saturate(100)';
         this.flashTimer--;
     }
     else{
         this.color = '#224';
+        this.filter = 'brightness(0)';
     }
     handleTileCollision(this);
     handleEntityCollision(this);
@@ -179,5 +182,5 @@ Beast.prototype.draw = function() {
     else if (this.facing == directions.left) {
         spriteIndex = 3;
     }
-    drawTiledImage(image, this.x - (BEAST_SIZE / 4), this.y - BEAST_SIZE, false, 0, spriteIndex * BEAST_SPRITE_HEIGHT, BEAST_SPRITE_WIDTH, BEAST_SPRITE_HEIGHT, 48, 64);
+    drawTiledImage(image, this.x - (BEAST_SIZE / 4), this.y - BEAST_SIZE, false, 0, spriteIndex * BEAST_SPRITE_HEIGHT, BEAST_SPRITE_WIDTH, BEAST_SPRITE_HEIGHT, 48, 64, this.filter);
 };
