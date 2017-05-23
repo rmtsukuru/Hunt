@@ -33,6 +33,7 @@ window.onload = function() {
         });
         drawForegroundTiles();
         drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(50, 0, 130, 0.5)', true);
+        drawImage('spotlight.png', 0, 0, true);
         drawHud();
     }
 
