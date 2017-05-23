@@ -32,7 +32,7 @@ window.onload = function() {
             entity.draw();
         });
         drawForegroundTiles();
-        drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(50, 0, 130, 0.7)', true);
+        drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(50, 0, 130, 0.8)', true);
         drawRect(player.x - canvasWidth / 2, player.y - canvasHeight, canvasWidth, canvasHeight / 2, 'black');
         drawRect(player.x + canvasWidth / 2, player.y - canvasHeight, canvasWidth / 2, canvasHeight * 2, 'black');
         drawRect(player.x - canvasWidth / 2, player.y + canvasHeight / 2, canvasWidth, canvasHeight / 2, 'black');
