@@ -32,7 +32,7 @@ window.onload = function() {
             entity.draw();
         });
         drawForegroundTiles();
-        drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(50, 0, 130, 0.5)', true);
+        drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(50, 0, 130, 0.7)', true);
         drawImage('spotlight.png', 0, 0, true);
         drawHud();
     }
