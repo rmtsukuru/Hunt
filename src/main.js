@@ -33,7 +33,11 @@ window.onload = function() {
         });
         drawForegroundTiles();
         drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(50, 0, 130, 0.7)', true);
-        drawImage('spotlight.png', 0, 0, true);
+        drawRect(player.x - canvasWidth / 2, player.y - canvasHeight, canvasWidth, canvasHeight / 2, 'black');
+        drawRect(player.x + canvasWidth / 2, player.y - canvasHeight, canvasWidth / 2, canvasHeight * 2, 'black');
+        drawRect(player.x - canvasWidth / 2, player.y + canvasHeight / 2, canvasWidth, canvasHeight / 2, 'black');
+        drawRect(player.x - canvasWidth, player.y - canvasHeight, canvasWidth / 2, canvasHeight * 2, 'black');
+        drawImage('spotlight.png', player.x - canvasWidth / 2, player.y - canvasHeight / 2);
         drawHud();
     }
 
