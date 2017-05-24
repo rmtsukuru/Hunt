@@ -10,6 +10,10 @@ function Entity(x, y) {
     this.color = '#000';
 };
 
+Entity.prototype.moving = function() {
+    return Math.abs(this.xVelocity) > 0 || Math.abs(this.yVelocity) > 0;
+}
+
 Entity.prototype.update = function() {
     this.x += this.xVelocity;
     this.y += this.yVelocity;

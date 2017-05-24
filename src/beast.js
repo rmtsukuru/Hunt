@@ -6,6 +6,7 @@ const BEAST_RUN_SPEED = 8;
 const BEAST_TIMER_FRAMES = 0.5 * FPS;
 const BEAST_RUN_TIMER_FRAMES = 0.8 * FPS;
 const BEAST_ECHOLOCATE_TIMER_FRAMES = 7 * FPS;
+const BEAST_ANIMATION_FRAMES = 10;
 const BEAST_HP = 200;
 const SPOT_RADIUS = 200;
 const FLASH_TIMER_FRAMES = FPS / 12;
@@ -16,7 +17,9 @@ function Beast(x, y) {
     this.health = BEAST_HP;
     this.thoughtTimer = 0;
     this.echolocateTimer = BEAST_ECHOLOCATE_TIMER_FRAMES;
-    this.yVelocity = BEAST_SPEED;
+    this.frameTimer = BEAST_ANIMATION_FRAMES;
+    this.animationFrame = 0;
+    this.facing = directions.up;
     this.spotted = false;
     this.flashTimer = 0;
     this.runTimer = 0;
@@ -170,9 +173,37 @@ Beast.prototype.handleEntityCollision = function(entity) {
     }
 };
 
+Beast.prototype.getMappedFrame = function(frame) {
+    switch (frame) {
+    case 0:
+        return 1;
+    case 1:
+        return 2;
+    case 2:
+        return 1;
+    case 3:
+        return 0;
+    }
+}
+
 Beast.prototype.draw = function() {
+    if (this.moving()) {
+        if (this.animationTimer <= 0) {
+            this.animationFrame++;
+            this.animationFrame %= 4;
+            this.animationTimer = BEAST_ANIMATION_FRAMES;
+        }
+        else {
+            this.animationTimer--;
+        }
+    }
+    else {
+        this.animationFrame = 0;
+        this.animationTimer = BEAST_ANIMATION_FRAMES;
+    }
     var image = 'sandy.png';
     var spriteIndex = 0;
+    var animationFrame = this.getMappedFrame(this.animationFrame);
     if (this.facing == directions.right) {
         spriteIndex = 1;
     }
@@ -182,5 +213,5 @@ Beast.prototype.draw = function() {
     else if (this.facing == directions.left) {
         spriteIndex = 3;
     }
-    drawTiledImage(image, this.x - (BEAST_SIZE / 4), this.y - BEAST_SIZE, false, 0, spriteIndex * BEAST_SPRITE_HEIGHT, BEAST_SPRITE_WIDTH, BEAST_SPRITE_HEIGHT, 48, 64, this.filter);
+    drawTiledImage(image, this.x - (BEAST_SIZE / 4), this.y - BEAST_SIZE, false, animationFrame * BEAST_SPRITE_WIDTH, spriteIndex * BEAST_SPRITE_HEIGHT, BEAST_SPRITE_WIDTH, BEAST_SPRITE_HEIGHT, 48, 64, this.filter);
 };
