@@ -165,7 +165,12 @@ Beast.prototype.handleEntityCollision = function(entity) {
         var startingHealth = this.health;
         this.health -= entity.damage(this);
         if (this.health != startingHealth && startingHealth >= 0) {
-            playSound('DogYip');
+            if (this.health < 0) {
+                playSound('DogWail');
+            }
+            else {
+                playSound('DogYip');
+            }
             this.flashTimer = FLASH_TIMER_FRAMES;
             this.runTimer = this.runTimerFrames();
             this.turnRandomDirection();
