@@ -87,3 +87,21 @@ FadeoutScene.prototype.draw = function() {
     Scene.prototype.draw.call(this);
     drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(0, 0, 0, ' + this.fadeStrength() + ')', true);
 };
+
+function TitleScene() {
+    Scene.call(this);
+}
+
+TitleScene.prototype = Object.create(Scene.prototype);
+
+TitleScene.prototype.update = function() {
+    if (initialKeyPress) {
+        scene = new TransitionScene();
+    }
+};
+
+TitleScene.prototype.draw = function() {
+    drawRect(0, 0, canvasWidth, canvasHeight, '#000', true);
+    drawText('HUNT', canvasWidth / 2 - 140, canvasHeight / 2 - 40, 'Perpetua', '100px', '#ef0000', true);
+    drawText('Press any key to begin', canvasWidth / 2 - 105, canvasHeight / 2 + 50, 'Perpetua', '22px', '#ef0000', true);
+}

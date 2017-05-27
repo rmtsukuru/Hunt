@@ -13,6 +13,9 @@ var keys = {
 
 var keyState, triggerKeyState;
 
+// This is for the title screen initial key press tracking.
+var initialKeyPress;
+
 function configureInput() {
     keyState = {};
     triggerKeyState = {};
@@ -23,6 +26,10 @@ function configureInput() {
 }
 
 var keyPressed = function(e) {
+    if (!initialKeyPress) {
+        initialKeyPress = true;
+        return;
+    }
     var key = _.findKey(keys, function(x) {
         return x == e.keyCode;
     });

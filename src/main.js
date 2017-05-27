@@ -9,7 +9,7 @@ window.onload = function() {
     configureGraphics(player);
     configureInput();
     configureAudio();
-    scene = new TransitionScene();
+    scene = new TitleScene();
 
     update = function() {
         entities.forEach(function(entity, i) {
