@@ -102,6 +102,6 @@ TitleScene.prototype.update = function() {
 
 TitleScene.prototype.draw = function() {
     drawRect(0, 0, canvasWidth, canvasHeight, '#000', true);
-    drawText('HUNT', canvasWidth / 2 - 140, canvasHeight / 2 - 40, 'Perpetua', '100px', '#ef0000', true);
-    drawText('Press any key to begin', canvasWidth / 2 - 105, canvasHeight / 2 + 50, 'Perpetua', '22px', '#ef0000', true);
+    drawText('HUNT', canvasWidth / 2 - 110, canvasHeight / 2 - 40, 'VT323', '140px', '#ef0000', true);
+    drawText('Press any key to begin', canvasWidth / 2 - 105, canvasHeight / 2 + 50, 'VT323', '22px', '#ef0000', true);
 }
