@@ -10,6 +10,8 @@ const BEAST_ANIMATION_FRAMES = 10;
 const BEAST_HP = 200;
 const SPOT_RADIUS = 200;
 const FLASH_TIMER_FRAMES = FPS / 12;
+const BLOOD_SPRAY_COUNT = 300;
+const BLOOD_SPRAY_COUNT_VARIANCE = 50;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
@@ -160,6 +162,14 @@ Beast.prototype.update = function() {
     Entity.prototype.update.call(this);
 };
 
+Beast.prototype.bloodSpray = function() {
+    var particleCount = BLOOD_SPRAY_COUNT + BLOOD_SPRAY_COUNT_VARIANCE * (Math.random() - 0.5);
+    for (var i = 0; i < particleCount; i++) {
+        var particle = new BloodParticle(this.x + this.width / 2, this.y + this.height / 2);
+        entities.unshift(particle);
+    }
+};
+
 Beast.prototype.handleEntityCollision = function(entity) {
     if (entity.active) {
         var startingHealth = this.health;
@@ -174,6 +184,7 @@ Beast.prototype.handleEntityCollision = function(entity) {
             this.flashTimer = FLASH_TIMER_FRAMES;
             this.runTimer = this.runTimerFrames();
             this.turnRandomDirection();
+            this.bloodSpray();
         }
     }
 };
