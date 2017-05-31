@@ -10,8 +10,8 @@ const BEAST_ANIMATION_FRAMES = 10;
 const BEAST_HP = 200;
 const SPOT_RADIUS = 200;
 const FLASH_TIMER_FRAMES = FPS / 12;
-const BLOOD_SPRAY_COUNT = 300;
-const BLOOD_SPRAY_COUNT_VARIANCE = 50;
+const BLOOD_SPRAY_COUNT = 150;
+const BLOOD_SPRAY_COUNT_VARIANCE = 25;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
