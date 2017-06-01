@@ -53,7 +53,11 @@ insertTree(7, 169);
 insertTree(3, 158);
 insertTree(12, 162);
 insertTree(68, 167);
-insertTree(67, 159);
+insertTree(64, 159);
 insertTree(75, 152);
+insertTree(55, 171);
+insertTree(44, 166);
+insertTree(30, 162);
+insertTree(23, 168);
 
 const TILE_SIZE = 32;
