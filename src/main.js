@@ -21,8 +21,9 @@ window.onload = function() {
 
     function drawHud() {
         drawText('X: ' + player.x + ' Y: ' + player.y, 2, 20, 'Cambria', '24px', '#2f2', true);
-        drawText('Beast HP: ' + beast.health, 2, 48, 'Cambria', '24px', '#2ff', true);
-        drawText('Beast Distance: ' + beast.distanceFromPlayer(), 2, 76, 'Cambria', '24px', '#e88', true);
+        drawText('Tile X: ' + tileIndex(player.x) + ' Tile Y: ' + tileIndex(player.y), 2, 48, 'Cambria', '24px', '#f2f', true);
+        drawText('Beast HP: ' + beast.health, 2, 76, 'Cambria', '24px', '#2ff', true);
+        drawText('Beast Distance: ' + beast.distanceFromPlayer(), 2, 104, 'Cambria', '24px', '#e88', true);
     }
 
     draw = function() {
