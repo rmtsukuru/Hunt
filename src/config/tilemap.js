@@ -90,4 +90,12 @@ insertTree(11, 37);
 insertTree(45, 63);
 insertTree(63, 58);
 insertTree(32, 53);
+insertTree(40, 41);
+insertTree(21, 32);
+insertTree(6, 20);
+insertTree(18, 10);
+insertTree(8, 2);
+insertTree(11, 9);
+insertTree(28, 19);
+insertTree(45, 26);
 
