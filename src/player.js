@@ -35,7 +35,7 @@ Player.prototype.preloadImages = function() {
 }
 
 Player.prototype.speed = function() {
-    if (DEBUG_SPEED) {
+    if (DEBUG_SPEED && keyState.shift) {
         return PLAYER_DEBUG_SPEED;
     }
     return PLAYER_SPEED;

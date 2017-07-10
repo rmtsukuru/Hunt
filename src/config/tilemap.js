@@ -84,4 +84,10 @@ insertTree(42, 76);
 insertTree(58, 74);
 insertTree(12, 61);
 insertTree(29, 65);
+insertTree(8, 47);
+insertTree(19, 50);
+insertTree(11, 37);
+insertTree(45, 63);
+insertTree(63, 58);
+insertTree(32, 53);
 

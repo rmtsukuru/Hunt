@@ -8,7 +8,9 @@ var keys = {
     s: 83,
     d: 68,
     z: 90,
-    space: 32
+    space: 32,
+    shift: 16,
+    control: 17
 };
 
 var keyState, triggerKeyState;
