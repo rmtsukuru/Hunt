@@ -162,3 +162,19 @@ function handleEntityCollision(entity) {
     });
 }
 
+function drawMinimap(ignoreCamera) {
+    drawRect(744, 0, 280, 406, '#aaa', ignoreCamera);
+    drawRect(746, 2, 276, 402, '#000', ignoreCamera);
+    for (var i = 0; i < tiles.length; i++) {
+        for (var j = 0; j < tiles[i].length; j++) {
+            if (!passableTileValue(tiles[i][j])) {
+                drawRect(746 + j * 2, 2 + i * 2, 2, 2, '#fff', ignoreCamera);
+            }
+            else if (j == 68 && i == 94) {
+                drawRect(746 + j * 2, 2 + i * 2, 2, 2, '#f00', ignoreCamera);
+            }
+        }
+    }
+    drawRect(746 + 2 * tileIndex(player.x), 2 + 2 * tileIndex(player.y), 2, 4, '#daf', ignoreCamera);
+}
+
