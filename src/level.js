@@ -168,7 +168,7 @@ function drawMinimap(ignoreCamera) {
     for (var i = 0; i < tiles.length; i++) {
         for (var j = 0; j < tiles[i].length; j++) {
             if (!passableTileValue(tiles[i][j])) {
-                drawRect(746 + j * 2, 2 + i * 2, 2, 2, '#fff', ignoreCamera);
+                drawRect(746 + j * 2, 2 + i * 2, 2, 2, '#0d0', ignoreCamera);
             }
             else if (j == 68 && i == 94) {
                 drawRect(746 + j * 2, 2 + i * 2, 2, 2, '#f00', ignoreCamera);
