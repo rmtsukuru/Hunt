@@ -5,3 +5,4 @@ const MUTE_BGM = true;
 const MUTE_ECHOLOCATION = true;
 const DEBUG_DAMAGE = true;
 const DEBUG_SPEED = true;
+const DEBUG_DISPLAY = true;

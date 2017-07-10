@@ -39,7 +39,9 @@ window.onload = function() {
         drawRect(player.x - canvasWidth / 2, player.y + canvasHeight / 2, canvasWidth, canvasHeight / 2, 'black');
         drawRect(player.x - canvasWidth, player.y - canvasHeight, canvasWidth / 2, canvasHeight * 2, 'black');
         drawImage('spotlight.png', player.x - canvasWidth / 2, player.y - canvasHeight / 2);
-        drawHud();
+        if (DEBUG_DISPLAY) {
+            drawHud();
+        }
     }
 
     mainLoop = function() {
