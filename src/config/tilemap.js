@@ -1,5 +1,7 @@
-const mapTileWidth = 157;
+const mapTileWidth = 137;
 const mapTileHeight = 200;
+
+const TILE_SIZE = 32;
 
 var tiles = [];
 for (var i = 0; i < mapTileHeight; i++) {
@@ -59,5 +61,27 @@ insertTree(55, 171);
 insertTree(44, 166);
 insertTree(30, 162);
 insertTree(23, 168);
+insertTree(48, 154);
+insertTree(36, 150);
+insertTree(20, 147);
+insertTree(9, 138);
+insertTree(51, 140);
+insertTree(55, 129);
+insertTree(30, 136);
+insertTree(39, 125);
+insertTree(17, 127);
+insertTree(49, 116);
+insertTree(58, 107);
+insertTree(51, 95);
+insertTree(43, 105);
+insertTree(10, 114);
+insertTree(25, 109);
+insertTree(33, 93);
+insertTree(16, 99);
+insertTree(7, 88);
+insertTree(21, 78);
+insertTree(42, 76);
+insertTree(58, 74);
+insertTree(12, 61);
+insertTree(29, 65);
 
-const TILE_SIZE = 32;
