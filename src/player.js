@@ -1,4 +1,5 @@
 const PLAYER_SPEED = 5;
+const PLAYER_DEBUG_SPEED = 10;
 const PLAYER_SIZE = 32;
 const PLAYER_SPRITE_MULTIPLIER = 0.5;
 const PLAYER_ANIMATION_FRAMES = 10;
@@ -33,6 +34,13 @@ Player.prototype.preloadImages = function() {
     }
 }
 
+Player.prototype.speed = function() {
+    if (DEBUG_SPEED) {
+        return PLAYER_DEBUG_SPEED;
+    }
+    return PLAYER_SPEED;
+}
+
 Player.prototype.update = function() {
     this.xVelocity = 0;
     this.yVelocity = 0;
@@ -57,16 +65,16 @@ Player.prototype.update = function() {
         }
         else {
             if (keyState.left || keyState.a) {
-                this.xVelocity -= PLAYER_SPEED;
+                this.xVelocity -= this.speed();
             }
             if (keyState.right || keyState.d) {
-                this.xVelocity += PLAYER_SPEED;
+                this.xVelocity += this.speed();
             }
             if (keyState.up || keyState.w) {
-                this.yVelocity -= PLAYER_SPEED;
+                this.yVelocity -= this.speed();
             }
             if (keyState.down || keyState.s) {
-                this.yVelocity += PLAYER_SPEED;
+                this.yVelocity += this.speed();
             }
 
             if (this.yVelocity == 0) {
