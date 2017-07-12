@@ -113,4 +113,15 @@ insertTree(68, 17);
 insertTree(67, 41);
 insertTree(74, 73);
 insertTree(76, 55);
+insertTree(76, 5);
+insertTree(85, 16);
+insertTree(94, 7);
+insertTree(105, 12);
+insertTree(112, 3);
+insertTree(121, 9);
+insertTree(132, 3);
+insertTree(127, 19);
+insertTree(114, 23);
+insertTree(98, 21);
+insertTree(79, 25);
 
