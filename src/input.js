@@ -8,6 +8,7 @@ var keys = {
     s: 83,
     d: 68,
     z: 90,
+    q: 81,
     space: 32,
     shift: 16,
     control: 17

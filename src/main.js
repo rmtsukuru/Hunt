@@ -1,6 +1,8 @@
 var mainLoop;
 var player, beast;
 
+var minimapEnabled = true;
+
 window.onload = function() {
     player = new Player(2400, 6000); 
     player.x = 4200;
@@ -14,6 +16,9 @@ window.onload = function() {
     scene = new TitleScene();
 
     update = function() {
+        if (triggerKeyState.q) {
+            minimapEnabled = !minimapEnabled;
+        }
         entities.forEach(function(entity, i) {
             entity.update();
         });
@@ -26,7 +31,9 @@ window.onload = function() {
         drawText('Tile X: ' + tileIndex(player.x) + ' Tile Y: ' + tileIndex(player.y), 2, 48, 'Cambria', '24px', '#f2f', true);
         drawText('Beast HP: ' + beast.health, 2, 76, 'Cambria', '24px', '#2ff', true);
         drawText('Beast Distance: ' + beast.distanceFromPlayer(), 2, 104, 'Cambria', '24px', '#e88', true);
-        drawMinimap(true);
+        if (minimapEnabled) {
+            drawMinimap(true);
+        }
     }
 
     draw = function() {
