@@ -1,7 +1,7 @@
 var mainLoop;
 var player, beast;
 
-var minimapEnabled = true;
+var minimapEnabled = false;
 
 window.onload = function() {
     player = new Player(2400, 6000); 
