@@ -5,8 +5,6 @@ var minimapEnabled = true;
 
 window.onload = function() {
     player = new Player(2400, 6000); 
-    player.x = 4200;
-    player.y = 200;
     beast = new Beast(2200, 3000);
     entities.push(beast);
     entities.push(player);
