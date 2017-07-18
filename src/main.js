@@ -25,6 +25,10 @@ window.onload = function() {
         updateInput();
     }
 
+    for (var i = 0; i < FPS; i++) {
+        update();
+    }
+
     function drawHud() {
         drawText('X: ' + player.x + ' Y: ' + player.y, 2, 20, 'Cambria', '24px', '#2f2', true);
         drawText('Tile X: ' + tileIndex(player.x) + ' Tile Y: ' + tileIndex(player.y), 2, 48, 'Cambria', '24px', '#f2f', true);
