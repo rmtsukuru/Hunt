@@ -20,6 +20,7 @@ window.onload = function() {
         entities.forEach(function(entity, i) {
             entity.update();
         });
+        spawnParticles();
         updateCamera(player);
         updateInput();
     }
