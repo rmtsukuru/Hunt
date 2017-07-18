@@ -1,8 +1,9 @@
 const SNOW_PARTICLE_SIZE = 4;
 const SNOW_PARTICLE_SPEED_VARIANCE = 6;
 const SNOW_PARTICLE_GRAVITY = 5;
-const SNOW_PARTICLE_COUNT = 7;
-const SNOW_PARTICLE_COUNT_VARIANCE = 2;
+const SNOW_PARTICLE_CAMERA_RATIO = 0.5;
+const SNOW_PARTICLE_COUNT = 10;
+const SNOW_PARTICLE_COUNT_VARIANCE = 5;
 
 function SnowParticle() {
     Entity.call(this);
@@ -17,7 +18,7 @@ function SnowParticle() {
 SnowParticle.prototype = Object.create(Entity.prototype);
 
 SnowParticle.prototype.update = function() {
-    this.yVelocity = SNOW_PARTICLE_GRAVITY - player.yVelocity;
+    this.yVelocity = SNOW_PARTICLE_GRAVITY - (player.yVelocity * SNOW_PARTICLE_CAMERA_RATIO);
     Entity.prototype.update.call(this);
     if (this.y > canvasHeight) {
         this.remove();
