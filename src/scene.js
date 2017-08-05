@@ -3,7 +3,6 @@ const FADEOUT_TIMER_FRAMES = 4 * FPS;
 const UPDATE_THRESHOLD = 0.1;
 
 var scene;
-var draw, update;
 
 function Scene() {
 }
