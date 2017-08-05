@@ -17,6 +17,7 @@ Scene.prototype.draw = function() {
 
 function GameScene() {
     Scene.call(this);
+    textFadeTimer = TEXT_FADE_TIMER_FRAMES;
 }
 
 GameScene.prototype = Object.create(Scene.prototype);

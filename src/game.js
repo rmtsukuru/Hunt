@@ -1,3 +1,7 @@
+const TEXT_FADE_TIMER_FRAMES = 4 * FPS;
+
+var textFadeTimer;
+
 function update() {
     if (triggerKeyState.q) {
         minimapEnabled = !minimapEnabled;
@@ -8,6 +12,13 @@ function update() {
     spawnParticles();
     updateCamera(player);
     updateInput();
+    if (textFadeTimer > 0) {
+        textFadeTimer--;
+    }
+}
+
+function textFadeStrength() {
+    return 1 - (textFadeTimer / TEXT_FADE_TIMER_FRAMES);
 }
 
 function drawHud() {
@@ -33,6 +44,9 @@ function draw() {
     drawRect(player.x - canvasWidth / 2, player.y + canvasHeight / 2, canvasWidth, canvasHeight / 2, 'black');
     drawRect(player.x - canvasWidth, player.y - canvasHeight, canvasWidth / 2, canvasHeight * 2, 'black');
     drawImage('spotlight.png', player.x - canvasWidth / 2, player.y - canvasHeight / 2);
+    if (textFadeStrength() > 0) {
+        drawText('Use arrow keys to move', 600, 180, 'VT323', '30px', 'rgba(222, 222, 255, ' + textFadeStrength() + ')', true);
+    }
     if (DEBUG_DISPLAY) {
         drawHud();
     }
