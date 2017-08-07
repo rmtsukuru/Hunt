@@ -4,6 +4,7 @@ const PLAYER_SIZE = 32;
 const PLAYER_SPRITE_MULTIPLIER = 0.5;
 const PLAYER_ANIMATION_FRAMES = 10;
 const PLAYER_FRAME_COUNT = 3;
+const MOVEMENT_TIMER_FRAMES = 2 * FPS;
 
 const directions = {
     left: 0,
@@ -21,6 +22,7 @@ function Player(x, y) {
     this.frameTimer = PLAYER_ANIMATION_FRAMES;
     this.animationFrame = 0;
     this.preloadImages();
+    this.movementTimer = MOVEMENT_TIMER_FRAMES;
 }
 
 Player.prototype = Object.create(Entity.prototype);
@@ -104,6 +106,9 @@ Player.prototype.update = function() {
             this.frameTimer = PLAYER_ANIMATION_FRAMES;
             this.animationFrame++;
             this.animationFrame %= PLAYER_FRAME_COUNT;
+        }
+        if (this.movementTimer > 0) {
+            this.movementTimer--;
         }
     }
     else {

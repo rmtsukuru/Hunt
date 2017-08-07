@@ -1,6 +1,6 @@
-const TEXT_FADE_TIMER_FRAMES = 4 * FPS;
+const TEXT_FADE_TIMER_FRAMES = 3 * FPS;
 
-var textFadeTimer;
+var textFadeTimer, textFadeOutTimer = -1;
 
 function update() {
     if (triggerKeyState.q) {
@@ -15,9 +15,18 @@ function update() {
     if (textFadeTimer > 0) {
         textFadeTimer--;
     }
+    else if (textFadeOutTimer > 0) {
+        textFadeOutTimer--;
+    }
+    else if (player.movementTimer == 0 && textFadeOutTimer < 0) {
+        textFadeOutTimer = TEXT_FADE_TIMER_FRAMES;
+    }
 }
 
 function textFadeStrength() {
+    if (textFadeOutTimer >= 0) {
+        return textFadeOutTimer / TEXT_FADE_TIMER_FRAMES;
+    }
     return 1 - (textFadeTimer / TEXT_FADE_TIMER_FRAMES);
 }
 
