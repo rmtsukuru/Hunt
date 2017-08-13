@@ -12,6 +12,7 @@ const SPOT_RADIUS = 200;
 const FLASH_TIMER_FRAMES = FPS / 12;
 const BLOOD_SPRAY_COUNT = 150;
 const BLOOD_SPRAY_COUNT_VARIANCE = 25;
+const MIN_ECHOLOCATION_VOLUME = 0.1;
 
 function Beast(x, y) {
     Entity.call(this, x, y);
@@ -120,11 +121,22 @@ Beast.prototype.think = function() {
     }
 };
 
+Beast.prototype.echolocationVolume = function() {
+    var x = Math.max(SPOT_RADIUS / this.distanceFromPlayer(), MIN_ECHOLOCATION_VOLUME);
+    if (x > 0.9) {
+        return 1;
+    }
+    else if (x > 0.8) {
+        return 0.9;
+    }
+    return 1 - 1 / (5 * x + 1);
+}
+
 Beast.prototype.echolocate = function() {
     if (this.distanceFromPlayer() > SPOT_RADIUS) {
         if (this.echolocateTimer <= 0) {
             if (!MUTE_ECHOLOCATION) {
-                playSound('large_wolf_howl0', SPOT_RADIUS / this.distanceFromPlayer());
+                playSound('large_wolf_howl0', this.echolocationVolume());
             }
             this.echolocateTimer = BEAST_ECHOLOCATE_TIMER_FRAMES;
         }
