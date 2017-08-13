@@ -170,11 +170,9 @@ function drawMinimap(ignoreCamera) {
             if (!passableTileValue(tiles[i][j])) {
                 drawRect(746 + j * 2, 2 + i * 2, 2, 2, '#0d0', ignoreCamera);
             }
-            else if (j == 68 && i == 94) {
-                drawRect(746 + j * 2, 2 + i * 2, 2, 2, '#f00', ignoreCamera);
-            }
         }
     }
+    drawRect(746 + 2 * tileIndex(beast.x), 2 + 2 * tileIndex(beast.y), 2, 2, '#f00', ignoreCamera);
     drawRect(746 + 2 * tileIndex(player.x), 2 + 2 * tileIndex(player.y), 2, 4, '#daf', ignoreCamera);
 }
 
