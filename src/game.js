@@ -28,7 +28,7 @@ function update() {
     else if (!slayMessageDisplayed && slayMessageTimer > 0) {
         slayMessageTimer--;
     }
-    else if (!movementMessageDisplayed && player.movementTimer == 0 && textFadeOutTimer < 0) {
+    else if (!movementMessageDisplayed && player.movementTimer == 0 && textFadeTimer == 0 && textFadeOutTimer < 0) {
         textFadeOutTimer = TEXT_FADE_TIMER_FRAMES;
     }
     else if (!slayMessageDisplayed && slayMessageTimer == 0 && textFadeOutTimer < 0) {
