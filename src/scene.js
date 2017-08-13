@@ -24,7 +24,7 @@ GameScene.prototype = Object.create(Scene.prototype);
 
 GameScene.prototype.update = function() {
     update();
-    if (beast.health < 0) {
+    if (beast.dead) {
         setTimeout(function() {
             scene = new FadeoutScene();
         }, 1500);

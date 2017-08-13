@@ -24,6 +24,7 @@ function Beast(x, y) {
     this.animationFrame = 0;
     this.facing = directions.up;
     this.spotted = false;
+    this.dead = false;
     this.flashTimer = 0;
     this.runTimer = 0;
     this.filter = 'brightness(0)';
@@ -187,9 +188,10 @@ Beast.prototype.handleEntityCollision = function(entity) {
         var startingHealth = this.health;
         this.health -= entity.damage(this);
         player.triggerAttack();
-        if (this.health != startingHealth && startingHealth >= 0) {
-            if (this.health < 0) {
+        if (this.health != startingHealth && !this.dead) {
+            if (this.health <= -0.25 * BEAST_HP) {
                 playSound('DogWail');
+                this.dead = true;
             }
             else {
                 playSound('DogYip');
