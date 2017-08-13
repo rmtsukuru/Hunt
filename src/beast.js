@@ -86,7 +86,7 @@ Beast.prototype.turnRandomDirection = function() {
     if (this.speed() > 0) {
         if (Math.random() <= 0.5) {
             this.xVelocity = this.speed();
-            if (Math.random() < 0.5) {
+            if ((Math.random() < 0.5 && this.x > 52) || this.x > 4300) {
                 this.xVelocity *= -1;
                 this.facing = directions.left;
             }
@@ -96,7 +96,7 @@ Beast.prototype.turnRandomDirection = function() {
         }
         else {
             this.yVelocity = this.speed();
-            if (Math.random() <= 0.5) {
+            if ((Math.random() < 0.5 && this.y > 52) || this.y > 6300) {
                 this.yVelocity *= -1;
                 this.facing = directions.up;
             }
