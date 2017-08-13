@@ -174,6 +174,7 @@ Beast.prototype.handleEntityCollision = function(entity) {
     if (entity.active) {
         var startingHealth = this.health;
         this.health -= entity.damage(this);
+        player.triggerAttack();
         if (this.health != startingHealth && startingHealth >= 0) {
             if (this.health < 0) {
                 playSound('DogWail');

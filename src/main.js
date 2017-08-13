@@ -11,6 +11,7 @@ window.onload = function() {
     configureGraphics(player);
     configureInput();
     configureAudio();
+    configureGame();
     scene = new TitleScene();
 
     for (var i = 0; i < FPS; i++) {

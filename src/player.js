@@ -5,6 +5,7 @@ const PLAYER_SPRITE_MULTIPLIER = 0.5;
 const PLAYER_ANIMATION_FRAMES = 10;
 const PLAYER_FRAME_COUNT = 3;
 const MOVEMENT_TIMER_FRAMES = 2 * FPS;
+const ATTACK_TIMER_FRAMES = 1 * FPS;
 
 const directions = {
     left: 0,
@@ -23,6 +24,7 @@ function Player(x, y) {
     this.animationFrame = 0;
     this.preloadImages();
     this.movementTimer = MOVEMENT_TIMER_FRAMES;
+    this.attackTimer = -1;
 }
 
 Player.prototype = Object.create(Entity.prototype);
@@ -41,6 +43,12 @@ Player.prototype.speed = function() {
         return PLAYER_DEBUG_SPEED;
     }
     return PLAYER_SPEED;
+}
+
+Player.prototype.triggerAttack = function() {
+    if (this.attackTimer < 0) {
+        this.attackTimer = ATTACK_TIMER_FRAMES;
+    }
 }
 
 Player.prototype.update = function() {
@@ -114,6 +122,9 @@ Player.prototype.update = function() {
     else {
         this.frameTimer = PLAYER_ANIMATION_FRAMES;
         this.animationFrame = 0;
+    }
+    if (this.attackTimer > 0) {
+        this.attackTimer--;
     }
     Entity.prototype.update.call(this);
 };
