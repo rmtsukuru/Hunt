@@ -4,5 +4,5 @@ const BGM_VOLUME = 0.4;
 const MUTE_BGM = false;
 const MUTE_ECHOLOCATION = false;
 const DEBUG_DAMAGE = false;
-const DEBUG_SPEED = true;
-const DEBUG_DISPLAY = true;
+const DEBUG_SPEED = false;
+const DEBUG_DISPLAY = false;
