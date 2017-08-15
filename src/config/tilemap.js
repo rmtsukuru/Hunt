@@ -12,9 +12,11 @@ for (var i = 0; i < mapTileHeight; i++) {
     tiles.push(row);
 }
 
-tiles[32][40] = 2;
+tiles[32][40] = 1;
+tiles[5][7] = 1;
+tiles[6][7] = 1;
 tiles[10][28] = 2;
-tiles[24][5] = 2;
-tiles[45][37] = 2;
+tiles[24][5] = 1;
+tiles[45][37] = 1;
 tiles[2][18] = 2;
 

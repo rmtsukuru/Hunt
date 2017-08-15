@@ -29,7 +29,6 @@ function TransitionScene(fadeOut) {
     Scene.call(this);
     this.fadeOut = fadeOut;
     this.fadeTimer = FADE_TIMER_FRAMES;
-    playSound('wind1', BGM_VOLUME, true);
 }
 
 TransitionScene.prototype = Object.create(Scene.prototype);
