@@ -17,18 +17,12 @@ Scene.prototype.draw = function() {
 
 function GameScene() {
     Scene.call(this);
-    textFadeTimer = TEXT_FADE_TIMER_FRAMES;
 }
 
 GameScene.prototype = Object.create(Scene.prototype);
 
 GameScene.prototype.update = function() {
     update();
-    if (beast.dead) {
-        setTimeout(function() {
-            scene = new FadeoutScene();
-        }, 1500);
-    }
 };
 
 function TransitionScene(fadeOut) {
@@ -102,8 +96,8 @@ TitleScene.prototype.update = function() {
 
 TitleScene.prototype.draw = function() {
     drawRect(0, 0, canvasWidth, canvasHeight, '#000', true);
-    drawText('HUNT', canvasWidth / 2 - 110, canvasHeight / 2 - 40, 'VT323', '140px', '#ef0000', true);
-    drawText('Press any key to begin', canvasWidth / 2 - 105, canvasHeight / 2 + 50, 'VT323', '22px', '#ef0000', true);
+    drawText('INSERT TITLE HERE', canvasWidth / 2 - 110, canvasHeight / 2 - 40, 'VT323', '140px', '#fff', true);
+    drawText('Replace this crap', canvasWidth / 2 - 105, canvasHeight / 2 + 50, 'VT323', '22px', '#fee', true);
 }
 
 function CreditScene() {
@@ -126,9 +120,5 @@ CreditScene.prototype.fadeStrength = function() {
 CreditScene.prototype.draw = function() {
     drawRect(0, 0, canvasWidth, canvasHeight, '#000', true);
     drawText('Created by Sam Randolph @rmtsukuru', 200, 100, 'VT323', '50px', '#bbf', true);
-    drawText('Some assets by', 400, 250, 'VT323', '50px', '#bbf', true);
-    drawText('adrilahan', 100, 400, 'VT323', '50px', '#bbf', true);
-    drawText('Luke.RUSTLTD', 430, 400, 'VT323', '50px', '#bbf', true);
-    drawText('Gibmaker', 790, 400, 'VT323', '50px', '#bbf', true);
-    drawRect(0, 0, canvasWidth, canvasHeight, 'rgba(0, 0, 0, ' + this.fadeStrength() + ')', true);
+    drawText('Other credits go here', 400, 250, 'VT323', '50px', '#bbf', true);
 }

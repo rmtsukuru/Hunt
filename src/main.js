@@ -1,12 +1,10 @@
 var mainLoop;
-var player, beast;
+var player;
 
 var minimapEnabled = false;
 
 window.onload = function() {
-    player = new Player(2400, 6000); 
-    beast = new Beast(2200, 3000);
-    entities.push(beast);
+    player = new Player(300, 200); 
     entities.push(player);
     configureGraphics(player);
     configureInput();

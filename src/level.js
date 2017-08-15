@@ -3,34 +3,20 @@ var entities = [];
 function drawTile(j, i, x) {
     switch(x) {
         case 1:
-            drawImage('tree-tile0.png', j * TILE_SIZE, i * TILE_SIZE);
+            drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, '#e00');
             break;
         case 2:
-            drawImage('tree-tile1.png', j * TILE_SIZE, i * TILE_SIZE);
-            break;
-        case 3:
-            drawImage('tree-tile2.png', j * TILE_SIZE, i * TILE_SIZE);
-            break;
-        case 4:
-            drawImage('tree-tile3.png', j * TILE_SIZE, i * TILE_SIZE);
-            break;
-        case 5:
-            drawImage('tree-tile4.png', j * TILE_SIZE, i * TILE_SIZE);
-            break;
-        case 6:
-            drawImage('tree-tile5.png', j * TILE_SIZE, i * TILE_SIZE);
-            break;
-        case 7:
-            drawImage('tree-tile6.png', j * TILE_SIZE, i * TILE_SIZE);
-            break;
-        case 8:
-            drawImage('tree-tile7.png', j * TILE_SIZE, i * TILE_SIZE);
+            drawRect(j * TILE_SIZE, i * TILE_SIZE, TILE_SIZE, '#00d');
             break;
     }
 }
 
 function passableTileValue(x) {
     return x == 0 || x > 1;
+}
+
+function foregroundTileValue(x) {
+    return passableTileValue(x);
 }
 
 function drawBackgroundTiles() {
@@ -46,7 +32,7 @@ function drawBackgroundTiles() {
 function drawForegroundTiles() {
     for (var i = 0; i < tiles.length; i++) {
         for (var j = 0; j < tiles[i].length; j++) {
-            if (passableTileValue(tiles[i][j])) {
+            if (foregroundTileValue(tiles[i][j])) {
                 drawTile(j, i, tiles[i][j]);
             }
         }
@@ -172,7 +158,5 @@ function drawMinimap(ignoreCamera) {
             }
         }
     }
-    drawRect(746 + 2 * tileIndex(beast.x), 2 + 2 * tileIndex(beast.y), 2, 2, '#f00', ignoreCamera);
     drawRect(746 + 2 * tileIndex(player.x), 2 + 2 * tileIndex(player.y), 2, 4, '#daf', ignoreCamera);
 }
-
